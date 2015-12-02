@@ -1,6 +1,6 @@
 require "sinatra"
 
 require_relative "db/config"
-require_relatieve "server"
+require_relative "server"
 
 run App::Server
