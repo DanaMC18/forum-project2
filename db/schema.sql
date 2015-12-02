@@ -15,8 +15,7 @@ CREATE TABLE topics (
   id INTEGER PRIMARY KEY,
   title TEXT,
   content TEXT,
-  date DATE,
-  votes INTEGER,
+  created_at DATETIME,
   comments INTEGER,
   user_id INTEGER REFERENCES users(id)
 );
@@ -24,7 +23,7 @@ CREATE TABLE topics (
 CREATE TABLE comments (
   id INTEGER PRIMARY KEY,
   content TEXT,
-  dateYes DATE,
+  created_at DATETIME,
   likes INTEGER,
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topic(id)
