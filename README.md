@@ -9,7 +9,7 @@
 6. A user should be able to see who created a topic.
 7. A user should be able to see who commented.
 8. A user should be able to upvote a topic.
-9. A user should be able to see topics list in order of popularity.
+9. A user should be able to see topics listed in order of popularity.
 10. A user should be able to see how many comments a topic has.
 
 ##Wire Frames
