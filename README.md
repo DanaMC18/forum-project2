@@ -23,6 +23,7 @@
 ##Wire Frames
 
 ##ERD/Data Models
+[!alt text](https://github.com/DanaMC18/forum-project2/blob/master/views/images/erd.png)
 
 ##Technologies Used
 1. HTML
