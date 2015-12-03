@@ -1,50 +1,66 @@
-<% if @user %>
- 
-  <h1> Welcome <%= @user.username %>! You're looking fly as fuck, today!</h1>
+<header>
 
-<% else %>
+  <h1> Fantastic Peeps And Where to Find Them</h1>
+  <a href="/">Home</a>
 
-  <h1> Welcome to Fly As Fuck Forum! </h1>
-  <a href="/register"> Not a member? Register here!</a>
-  <a href="/log-in"> Already a member? Log in!</a>
+  <% if @user %>
+    
+    <h1> Welcome <%= @user.username %>! You fantastic peep, you!</h1>
+    <a href="/logout">Log Out</a> 
 
-<% end %>
+  <% else %>
+    <p>Not a member? <a class="register-btn" href="/register">Register here!</a></p>
+    <p>Already a member? <a class="login-btn" href="/login"> Log in!</a></p>
 
-<!-- LINK TO BOARDS -->
-<a href="/boards">Enter!</a>
+  <% end %>
+
+  <!-- LINK TO BOARDS -->
+  <a href="/boards">Enter!</a>
+</header>
+
 
 
 <!-- REGISTER FORM MODAL -->
-<div id="register-modal">
-  <div id="register-modal-content">
+<!-- <div id="register" class="modal-container">
+  <div class="modal-content">
     
-    <form method="post" action="/register">
+    <a id="close-reg-btn" class= "close-btn" href="/">Close</a>
+    <p>To be part of the conversation, register below</p>
+    <p>Already a member? <a class="login-btn" href="/login"> Log in!</a>
 
+    <form method="post" action="/register">
       <label for="name">Name:</label>
-      <input type="text" placeholder="name" name="name">
+      <input type="text" placeholder="Name" name="name">
       <br>
-      <label for="username">Username:</label>
-      <input type="text" placeholder="username" name="username">
+      <label for="username">Create a username:</label>
+      <input type="text" placeholder="Username" name="username">
       <br>
       <label for="profile_pic">Profile Picture:</label>
       <input type="text" placeholder="image url" name="profile_pic">
+      <br>
+      <button>Register!</button>
 
     </form>
-  </div> <!--register-modal-content-->
-</div> <!--register-modal -->
+  </div> 
+</div> -->
+
 
 <!-- LOG IN FORM MODAL -->
-<div id="login-modal">
-  <div id="login-modal-content">
+ <!-- <div id="login" class="modal-container">
+  <div class="modal-content">
     
+    <a id="close-login-btn" class="close-btn" href="/">Close</a>
+    <p>Not yet a member? <a class="register-btn" href="/register">Register here!</a>
     <form method="post" action="/login">
 
       <label for="username">Username:</label>
-      <input type="text" placeholder="username" name="username">
+      <input type="text" placeholder="Username" name="username">
+      <br>
+      <button>Log in!</button>
 
     </form>
-  </div> <!--log-in-modal-content-->
-</div> <!--log-in-modal -->
+  </div>
+</div> -->
 
 
 
