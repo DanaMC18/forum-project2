@@ -15,3 +15,9 @@ Vote.destroy_all
 # bananas.user_id
 # dana.topics
 # dana.topics.first.title
+
+
+#Get topics to show
+#Logic for upvoting (.order?)
+#likes
+#default profile pics

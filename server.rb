@@ -9,6 +9,9 @@ module App
     end
 
     get '/boards' do 
+      @topics = Topic.all 
+      @topics.order
+      erb :boards
     end
 
     get '/register' do 

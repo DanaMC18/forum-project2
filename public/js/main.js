@@ -3,8 +3,8 @@ console.log('accio script!');
 var $registerBtns;
 var $loginBtns;
 
-var $closeRegBtn;
-var $closeLoginBtn;
+var $RegCloseBtn;
+var $LoginCloseBtn;
 
 var $registerModal;
 var $loginModal;
@@ -16,8 +16,8 @@ $(document).ready(function(){
 $registerBtns = $('.register-btn');
 $loginBtns = $('.login-btn');
 
-$closeRegBtn = $('close-reg-btn');
-$closeLoginBtn = $('close-login-btn');
+$RegCloseBtn = $('#reg-close-btn');
+$LoginCloseBtn = $('#login-close-btn');
 
 $registerModal = $('#register');
 $loginModal = $('#login');
@@ -36,8 +36,8 @@ $registerBtns.on('click', toggleRegisterModal);
 
 $loginBtns.on('click', toggleLoginModal);
 
-$closeRegBtn.on('click', toggleRegisterModal);
+$RegCloseBtn.on('click', toggleRegisterModal);
 
-$closeLoginBtn.on('click', toggleLoginModal);
+$LoginCloseBtn.on('click', toggleLoginModal);
 
 });

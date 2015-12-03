@@ -16,7 +16,6 @@ CREATE TABLE topics (
   title TEXT,
   content TEXT,
   created_at DATETIME,
-  comments INTEGER,
   user_id INTEGER REFERENCES users(id)
 );
 
@@ -24,7 +23,6 @@ CREATE TABLE comments (
   id INTEGER PRIMARY KEY,
   content TEXT,
   created_at DATETIME,
-  likes INTEGER,
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topic(id)
 );

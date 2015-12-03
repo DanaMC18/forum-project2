@@ -10,6 +10,12 @@ header {
   background: lightgrey;
 }
 
+.close-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  float: right;
+}
+
 .modal-container {
   display: none;
   position: fixed;
@@ -26,4 +32,5 @@ header {
   background-color: white;
   width: 40%;
   margin: 0 30%;
+  margin: 150px auto;
 }
