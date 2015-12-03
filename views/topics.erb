@@ -11,6 +11,10 @@
     <%= topic.user.username %> </a>
   </p>
 
-  <p> Created: <%= topic.created_at%> </p>
+  <form method="POST" action="/topics/<%=topic.id%>/votes">
+    <button>Vote up!</button>
+  </form>
+
+  <p> Created: <%= topic.pretty_time%> </p>
 
 <% end %>

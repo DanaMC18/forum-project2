@@ -11,10 +11,8 @@ module App
 
 
     get '/topics' do 
-      @topics = Topic.all
+      @topics = Topic.topics_ordered
       
-      #@votes = Vote.all
-      #ORDER based on votes; something like votes.find_by(topic_id: @topic[:id]).order
       erb :topics
     end
 
@@ -35,16 +33,14 @@ module App
 
     #When registering
     post '/users' do 
-      user = User.find_by({username: params[:username]})
-      
-      if user.username.downcase == params[:username].downcase
-        "Sorry #{params[:name]}, but that username has already been taken. Please try a new username."
-        redirect to '/#'
-      elsif params[:password] != params[:password_confirmation]
-        "Sorry #{params[:name]}, but your passwords don't match. Please enter them again."
+      user = User.new({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
+      if user.save
+        redirect to '/topics'
       else
-        User.create({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
-        redirect to '/'
+        # "Sorry #{params[:name]}, but that username has already been taken. Please try a new username."
+        # "Sorry #{params[:name]}, but your passwords don't match. Please enter them again."    
+        @message = "something doesn't match or whatever"
+        erb :index
       end
     end
 
@@ -52,9 +48,20 @@ module App
     #When logging in
     post '/sessions' do 
       user = User.find_by({username: params[:username]})
-      session[:user_id] = user[:id]
+      if user
+        session[:user_id] = user.id
+        redirect to '/'
+      else
+        "wrong info"
+      end
+    end
 
-      redirect to '/'
+    post '/topics/:id/votes' do
+      user_id = session[:user_id] 
+      topic_id = params[:id]
+      Vote.create(user_id: user_id, topic_id: topic_id)
+
+      redirect to '/topics'
     end
 
 
