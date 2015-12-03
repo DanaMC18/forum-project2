@@ -15,7 +15,7 @@
   <% end %>
 
   <!-- LINK TO BOARDS -->
-  <a href="/boards">Enter!</a>
+  <a href="/topics">Enter!</a>
 </header>
 
 
@@ -26,21 +26,26 @@
     
     <a id="reg-close-btn" class= "close-btn" href="/">Close</a>
     <p>To be part of the conversation, register below</p>
-    <p>Already a member? <a class="login-btn" href="../#"> Log in!</a></p>
+    <p>Already a member? <a class="login-btn" href="#"> Log in!</a></p>
 
-    <form method="post" action="/register">
+    <form method="post" action="/users">
+     
       <label for="name">Name:</label>
       <input type="text" placeholder="Name" name="name">
       <br>
       <label for="username">Create a username:</label>
       <input type="text" placeholder="Username" name="username">
       <br>
-      <label for="profile_pic">Profile Picture:</label>
-      <input type="text" placeholder="image url" name="profile_pic">
+      <label for="password">Password:</label>
+      <input type="password" placeholder="password123" name="password">
+      <br>
+      <label for="password_confirmation">Confirm Password:</label>
+      <input type="password" placeholder="password123" name="password_confirmation">
       <br>
       <button>Register!</button>
 
     </form>
+ 
   </div> 
 </div>
 
@@ -50,15 +55,19 @@
   <div class="modal-content">
     
     <a id="login-close-btn" class="close-btn" href="/">Close</a>
-    <p>Not yet a member? <a class="register-btn" href="../#">Register here!</a></p>
-    <form method="post" action="/login">
+    <p>Not yet a member? <a class="register-btn" href="#">Register here!</a></p>
+    
+    <form method="post" action="/sessions">
 
       <label for="username">Username:</label>
       <input type="text" placeholder="Username" name="username">
       <br>
+      <label for="password">Password:</label>
+      <input type="password" placeholder="password123" name="password">
       <button>Log in!</button>
 
     </form>
+  
   </div>
 </div>
 

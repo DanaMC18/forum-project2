@@ -10,11 +10,13 @@ users = [
   {
     name: 'Dana', 
     username: 'DanaMC18', 
+    password_digest: '$2a$10$7k79S7LGLsbnY50EtEM6B.h6HqKzwX5cEFFHyXMzCkqcB6WjdZ9lK',
     profile_pic: 'https://s-media-cache-ak0.pinimg.com/236x/ac/27/0a/ac270a6e86b61cbfb4ade530875ec7a6.jpg'
   },
   {
     name: 'D$',
     username: 'D-Money',
+    password_digest: '$2a$10$7k79S7LGLsbnY50EtEM6B.h6HqKzwX5cEFFHyXMzCkqcB6WjdZ9lK',
     profile_pic: 'http://images.clipartpanda.com/green-dollar-sign-clipart-4T9gK5qTE.jpeg'
   }
 ]
@@ -26,6 +28,12 @@ topics = [
   {
     title: 'Welcome', 
     content: 'Welcome to Fantastic Peeps and Where to Find Them! (hint...its here)',
+    created_at: DateTime.new,
+    user_id: 1
+  },
+  {
+    title: 'About',
+    content: 'This forum was made from scratch using HTML, CSS, JavaScript/JQuery, Ruby, Sinatra, SQL/ActiveRecord',
     created_at: DateTime.new,
     user_id: 1
   }
@@ -40,6 +48,18 @@ comments = [
   created_at: DateTime.new,
   user_id: 2,
   topic_id: 1
+  },
+  {
+    content: '@D-Money yeah this forum is the bee\'s knees!',
+    created_at: DateTime.new,
+    user_id: 1,
+    topic_id: 1
+  },
+  {
+    content: '@DanaMC18 Totally',
+    created_at: DateTime.new,
+    user_id: 2,
+    topic_id: 1
   }
 ]
 

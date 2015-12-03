@@ -1,0 +1,16 @@
+
+<% @topics.each do |topic| %>
+
+  <h2>
+    <a href="topics/<%=topic.id%>">
+    <%= topic.title %> </a>
+  </h2>
+
+  <p> By: 
+    <a href="users/<%= topic.user_id%>">
+    <%= topic.user.username %> </a>
+  </p>
+
+  <p> Created: <%= topic.created_at%> </p>
+
+<% end %>

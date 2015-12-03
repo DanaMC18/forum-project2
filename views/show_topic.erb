@@ -1,0 +1,55 @@
+
+<a href="/topics"> Back to Topics </a>
+
+<div id="topic-container">
+  <h2><%= @topic.title %></h2>
+  <a href="/users/<%=@topic.user_id%>"> <%= @user %> </a>
+
+  <div id="topic-content">
+    <p> <%= @topic.content %> </p>
+
+  </div> <!--content-->
+
+  <!-- COMMENTS HERE -->
+
+  <div id="comments-container">
+
+    <h3>Comments:</h3>
+
+    <% if @comment %>
+
+      <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %> </a>
+      <p> At: <%= @comment.created_at %> </p>
+      <p> <%= @comment.content %> </p>
+
+    <% else %>
+
+      <% @comments.each do |comment| %>
+
+        <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %> </a>
+        <p> At: <%= comment.created_at %> </p>
+        <p> <%= comment.content %> </p>
+
+      <% end %> <!-- .each -->
+
+    <% end %> <!-- if/else -->
+
+    <!-- ADD COMMENT FORM BELOW; USE IF/ELSE SO ONLY SOMEONE LOGGED IN SEES FORM -->
+
+  </div> <!--comments-container-->
+
+</div><!--topic-container-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

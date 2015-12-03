@@ -12,6 +12,7 @@ var $loginModal;
 // jquery
 $(document).ready(function(){
 
+
 //assign variables
 $registerBtns = $('.register-btn');
 $loginBtns = $('.login-btn');
