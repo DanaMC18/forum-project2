@@ -12,8 +12,10 @@ module App
     end
 
 
-    #topics ranked by vote showing creator and number of comments
+    #topics page
+    #ranked by amount of votes; shows creator and number of comments
     get '/topics' do 
+      @user = User.find(session[:user_id]) if session[:user_id]
       @topics = Topic.topics_ordered
       erb :topics
     end
@@ -24,11 +26,26 @@ module App
       user_id = session[:user_id] 
       topic_id = params[:id]
       Vote.create(user_id: user_id, topic_id: topic_id)
-
       redirect to '/topics'
     end
 
-    #to enter a topic and see comments
+
+    #to get to new topic form 
+    get '/topics/new' do 
+      erb :new_topic
+    end
+
+
+    #to createa a new topic
+    post '/topics/new' do 
+      user_id = session[:user_id]
+      Topic.create(title: params[:title], content: params[:content], created_at: DateTime.now, user_id: user_id)
+      redirect to "/topics"
+    end
+
+
+    #to enter a topic
+    #read its content and see/add comments
     get '/topics/:id' do 
       @topic = Topic.find(params[:id])
       @created_by = @topic.user.username
@@ -40,11 +57,11 @@ module App
       if @comments.length <= 1
         @comment = @comments.first
       end
-
       erb :show_topic
     end
 
 
+    #to create a new comment
     post '/comments/:id/new' do
       user_id = session[:user_id]
       topic_id = params[:id]
@@ -54,6 +71,7 @@ module App
     end
 
 
+    #list users page
     get '/users' do 
       @users = User.all
 
@@ -61,6 +79,7 @@ module App
     end
 
 
+    #profile page of a particular user
     get '/users/:id' do 
       @user = User.find(params[:id])
 
@@ -68,7 +87,7 @@ module App
     end
 
 
-    #when registering
+    #Registration Modal
     post '/users' do 
       user = User.new({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
       if user.save
@@ -83,7 +102,7 @@ module App
     end
 
 
-    #when logging in
+    #Login Modal
     post '/sessions' do 
       user = User.find_by({username: params[:username]})
       if user

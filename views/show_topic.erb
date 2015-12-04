@@ -39,18 +39,20 @@
     <!-- NEW COMMENT FORM  -->
     <!-- Seen only by someone logged in -->
     <% if @user %>
-
+      <h3> Add Comment: </h3>
+      
       <form method="POST" action="/comments/<%= @topic.id %>/new">
 
         <p> Write Your Post Below </p>
         <input id="comment-input" type="text" name="content">
+        <br>
         <input type="submit" value="Add Comment">
 
       </form>
 
     <% else %>
 
-      <p> Want to join the conversation? <a href="/"> Log In! </a> </p>
+      <h3> Want to join the conversation? <a href="/"> Log In! </a> </h3>
 
     <% end %>
 

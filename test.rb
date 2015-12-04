@@ -17,7 +17,12 @@ Vote.destroy_all
 # dana.topics.first.title
 
 
-#Get topics to show
-#Logic for upvoting (.order?)
-#likes
-#default profile pics
+# default profile pics
+# markdown (redcarpet gem)
+# edit: profiles, topics, comments
+# likes on comments
+# logout
+# comment count on topics page
+# styling (ughhhhh)
+# wire frames
+
