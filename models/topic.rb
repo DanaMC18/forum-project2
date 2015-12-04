@@ -13,6 +13,6 @@ class Topic < ActiveRecord::Base
   end
 
   def pretty_time
-    self.created_at.strftime('at %I:%M%p')
+    self.created_at.strftime('%A, %d %b %Y %l:%M %p')
   end
 end

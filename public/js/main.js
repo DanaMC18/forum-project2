@@ -1,7 +1,11 @@
 console.log('accio script!');
 
-var $registerBtns;
-var $loginBtns;
+// name variables
+var $mainRegBtn;
+var $mainLoginBtn;
+
+var $subRegBtn;
+var $subLoginBtn;
 
 var $RegCloseBtn;
 var $LoginCloseBtn;
@@ -14,14 +18,18 @@ $(document).ready(function(){
 
 
 //assign variables
-$registerBtns = $('.register-btn');
-$loginBtns = $('.login-btn');
+$mainRegBtn = $('#main-reg-btn');
+$mainLoginBtn = $('#main-login-btn');
+
+$subRegBtn = $('#sub-reg-btn');
+$subLoginBtn = $('#sub-login-btn');
 
 $RegCloseBtn = $('#reg-close-btn');
 $LoginCloseBtn = $('#login-close-btn');
 
 $registerModal = $('#register');
 $loginModal = $('#login');
+
 
 // create functions to toggle modals
 var toggleRegisterModal = function (){
@@ -33,12 +41,13 @@ var toggleLoginModal = function (){
 }
 
 // event listeners on modals
-$registerBtns.on('click', toggleRegisterModal);
+$mainRegBtn.on('click', toggleRegisterModal);
+$mainLoginBtn.on('click', toggleLoginModal);
 
-$loginBtns.on('click', toggleLoginModal);
+$subRegBtn.on('click', toggleRegisterModal);
+$subLoginBtn.on('click', toggleLoginModal);
 
 $RegCloseBtn.on('click', toggleRegisterModal);
-
 $LoginCloseBtn.on('click', toggleLoginModal);
 
 });

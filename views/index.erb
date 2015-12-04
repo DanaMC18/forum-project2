@@ -1,48 +1,86 @@
 <header>
 
-  <h1> Fantastic Peeps And Where to Find Them</h1>
-  <a href="/">Home</a>
+  <h1> Fantastic Peeps And Where to Find Them </h1>
 
   <% if @user %>
     
     <h1> Welcome <%= @user.username %>! You fantastic peep, you!</h1>
-    <a href="/logout">Log Out</a> 
+
+    <a href="/topics"> Enter!</a>
+    <br>
+    <a href="/logout"> Log Out </a> 
+    <br>
+    <a href="/users"> Fantastic Peeps </a>
 
   <% else %>
-    <p>Not a member? <a class="register-btn" href="#">Register here!</a></p>
-    <p>Already a member? <a class="login-btn" href="#"> Log in!</a></p>
+    
+    <a href="/topics">Enter!</a>
+    
+    <br>
+
+    <p>Not a member? 
+      <a id="main-reg-btn" class="register-btn" href="#">Register here!</a>
+    </p>
+
+    <p>Already a member? 
+      <a id="main-login-btn" class="login-btn" href="#"> Log in!</a>
+    </p>
 
   <% end %>
 
   <!-- LINK TO BOARDS -->
-  <a href="/topics">Enter!</a>
+  <br>
+
 </header>
 
-      <%= @message %>
+
+<% if @password_message %>
+ 
+  <h3> <%= @password_message %> </h3>
+
+<% elsif @username_message %>
+ 
+  <h3> <%= @username_message %> </h3>
+
+<% end %>
+
 
 <!-- REGISTER FORM MODAL -->
 <div id="register" class="modal-container">
   <div class="modal-content">
     
-    <a id="reg-close-btn" class= "close-btn" href="/">Close</a>
-    <p>To be part of the conversation, register below</p>
-    <p>Already a member? <a class="login-btn" href="#"> Log in!</a></p>
+    <a id="reg-close-btn" class= "close-btn" href="/"> Close </a>
+    
+    <p>To be part of the conversation, register below!</p>
+
+    <p>Already a member? 
+      <a id="sub-login-btn" class="login-btn" href="#"> Log in! </a>
+    </p>
 
     <form method="post" action="/users">
      
       <label for="name">Name:</label>
       <input type="text" placeholder="Name" name="name">
+
       <br>
+
       <label for="username">Create a username:</label>
       <input type="text" placeholder="Username" name="username">
+
       <br>
+
       <label for="password">Password:</label>
       <input type="password" placeholder="password123" name="password">
+
       <br>
+
       <label for="password_confirmation">Confirm Password:</label>
       <input type="password" placeholder="password123" name="password_confirmation">
+      
       <br>
+      
       <button>Register!</button>
+
     </form>
  
   </div> 
@@ -53,17 +91,24 @@
  <div id="login" class="modal-container">
   <div class="modal-content">
     
-    <a id="login-close-btn" class="close-btn" href="/">Close</a>
-    <p>Not yet a member? <a class="register-btn" href="#">Register here!</a></p>
+    <a id="login-close-btn" class="close-btn" href="/"> Close </a>
+    
+    <p>Not yet a member? 
+      <a id="sub-reg-btn" class="register-btn" href="#"> Register here! </a>
+    </p>
     
     <form method="post" action="/sessions">
 
       <label for="username">Username:</label>
       <input type="text" placeholder="Username" name="username">
+
       <br>
+
       <label for="password">Password:</label>
       <input type="password" placeholder="password123" name="password">
+
       <button>Log in!</button>
+
     </form>
   
   </div>

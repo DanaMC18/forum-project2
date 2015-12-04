@@ -3,15 +3,15 @@
 
 <div id="topic-container">
   <h2><%= @topic.title %></h2>
-  <a href="/users/<%=@topic.user_id%>"> <%= @user %> </a>
+  <a href="/users/<%=@topic.user_id%>"> <%= @created_by %> </a>
 
   <div id="topic-content">
     <p> <%= @topic.content %> </p>
 
   </div> <!--content-->
 
-  <!-- COMMENTS HERE -->
 
+  <!-- COMMENTS HERE -->
   <div id="comments-container">
 
     <h3>Comments:</h3>
@@ -19,7 +19,7 @@
     <% if @comment %>
 
       <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %> </a>
-      <p> At: <%= @comment.created_at %> </p>
+      <p> At: <%= @comment.pretty_time %> </p>
       <p> <%= @comment.content %> </p>
 
     <% else %>
@@ -27,14 +27,33 @@
       <% @comments.each do |comment| %>
 
         <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %> </a>
-        <p> At: <%= comment.created_at %> </p>
+        <p> At: <%= comment.pretty_time %> </p>
         <p> <%= comment.content %> </p>
 
       <% end %> <!-- .each -->
 
     <% end %> <!-- if/else -->
 
-    <!-- ADD COMMENT FORM BELOW; USE IF/ELSE SO ONLY SOMEONE LOGGED IN SEES FORM -->
+    
+
+    <!-- NEW COMMENT FORM  -->
+    <!-- Seen only by someone logged in -->
+    <% if @user %>
+
+      <form method="POST" action="/comments/<%= @topic.id %>/new">
+
+        <p> Write Your Post Below </p>
+        <input id="comment-input" type="text" name="content">
+        <input type="submit" value="Add Comment">
+
+      </form>
+
+    <% else %>
+
+      <p> Want to join the conversation? <a href="/"> Log In! </a> </p>
+
+    <% end %>
+
 
   </div> <!--comments-container-->
 
