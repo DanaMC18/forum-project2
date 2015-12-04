@@ -8,6 +8,10 @@ class Topic < ActiveRecord::Base
     self.votes.count
   end
 
+  def comment_count
+    self.comments.count
+  end
+
   def self.topics_ordered
     all.sort {|x,y| y.vote_num <=> x.vote_num}
   end

@@ -12,6 +12,8 @@
     <%= topic.user.username %> </a>
   </p>
 
+  <p> Comments: <%= topic.comment_count %> </p>
+
   <form method="POST" action="/topics/<%=topic.id%>/votes">
     <button>Vote up!</button>
   </form>

@@ -22,7 +22,6 @@ Vote.destroy_all
 # edit: profiles, topics, comments
 # likes on comments
 # logout
-# comment count on topics page
 # styling (ughhhhh)
 # wire frames
 
