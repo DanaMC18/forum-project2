@@ -23,7 +23,7 @@ module App
 
     #to vote on topics 
     post '/topics/:id/votes' do
-      user_id = session[:user_id] 
+      user_id = session[:user_id] if session[:user_id]
       topic_id = params[:id]
       Vote.create(user_id: user_id, topic_id: topic_id)
       redirect to '/topics'
@@ -61,8 +61,19 @@ module App
     end
 
 
+    # like a comment
+    post '/topics/:id/comments/:id2/likes' do 
+      user_id = session[:user_id] if session[:user_id]
+      comment_id = params[:id2]
+
+      Like.create(user_id: user_id, comment_id: comment_id)
+      redirect to "topics/#{params[:id]}"
+    end
+
+
+
     #to create a new comment
-    post '/comments/:id/new' do
+    post '/topics/:id/comments/new' do
       user_id = session[:user_id]
       topic_id = params[:id]
       comment = Comment.create(content: params[:content], created_at: DateTime.now, user_id: user_id, topic_id: topic_id)

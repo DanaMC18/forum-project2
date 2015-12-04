@@ -2,16 +2,19 @@
 <a href="/topics"> Back to Topics </a>
 
 <div id="topic-container">
+
   <h2><%= @topic.title %></h2>
   <a href="/users/<%=@topic.user_id%>"> <%= @created_by %> </a>
 
   <div id="topic-content">
+    
     <p> <%= @topic.content %> </p>
 
   </div> <!--content-->
 
 
   <!-- COMMENTS -->
+  <!-- Need if/else because .each does not work if there is only one comment -->
   <div id="comments-container">
 
     <h3>Comments:</h3>
@@ -19,16 +22,40 @@
     <% if @comment %>
 
       <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %> </a>
+
       <p> At: <%= @comment.pretty_time %> </p>
+      
       <p> <%= @comment.content %> </p>
+
+      <p> <%= @comment.like_count %> </p>
+
+      <!-- LIKE COMMENT -->
+      <form method="POST" action="topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
+
+        <button>Like</button>
+
+      </form>
+      <!--  -->
+
 
     <% else %>
 
       <% @comments.each do |comment| %>
 
         <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %> </a>
+
         <p> At: <%= comment.pretty_time %> </p>
+        
         <p> <%= comment.content %> </p>
+
+        <p> <%= comment.like_count %> </p>
+
+        <!-- LIKE COMMENT -->
+        <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
+
+        <button>Like</button>
+
+        </form>
 
       <% end %> <!-- .each -->
 
@@ -41,7 +68,8 @@
     <% if @user %>
       <h3> Add Comment: </h3>
       
-      <form method="POST" action="/comments/<%= @topic.id %>/new">
+
+      <form method="POST" action="/topics/<%= @topic.id %>/comments/new">
 
         <p> Write Your Post Below </p>
         <textarea name="content" cols="100" rows="20"></textarea>
@@ -50,9 +78,12 @@
 
       </form>
 
+
     <% else %>
 
+
       <h3> Want to join the conversation? <a href="/"> Log In! </a> </h3>
+
 
     <% end %>
 

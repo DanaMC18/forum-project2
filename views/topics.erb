@@ -14,8 +14,12 @@
 
   <p> Comments: <%= topic.comment_count %> </p>
 
+  <p> Votes: <%= topic.vote_num %> </p>
+
   <form method="POST" action="/topics/<%=topic.id%>/votes">
+
     <button>Vote up!</button>
+
   </form>
 
   <p> Created: <%= topic.pretty_time%> </p>
