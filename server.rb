@@ -32,7 +32,7 @@ module App
 
     #to get to new topic form 
     get '/topics/new' do 
-      erb :new_topic
+      erb :topic_new
     end
 
 
@@ -51,13 +51,13 @@ module App
       @created_by = @topic.user.username
 
       @comments = Comment.all.where(topic_id: params[:id])
-
+      
       @user = User.find(session[:user_id]) if session[:user_id]
 
       if @comments.length <= 1
         @comment = @comments.first
       end
-      erb :show_topic
+      erb :topic_show
     end
 
 
@@ -65,7 +65,6 @@ module App
     post '/topics/:id/comments/:id2/likes' do 
       user_id = session[:user_id] if session[:user_id]
       comment_id = params[:id2]
-
       Like.create(user_id: user_id, comment_id: comment_id)
       redirect to "topics/#{params[:id]}"
     end
@@ -77,7 +76,6 @@ module App
       user_id = session[:user_id]
       topic_id = params[:id]
       comment = Comment.create(content: params[:content], created_at: DateTime.now, user_id: user_id, topic_id: topic_id)
-
       redirect to "/topics/#{params[:id]}"
     end
 
@@ -90,11 +88,34 @@ module App
     end
 
 
-    #profile page of a particular user
+    # profile page of a particular user
     get '/users/:id' do 
-      @user = User.find(params[:id])
+      @user = User.find(session[:user_id]) if session[:user_id]
+      @profile = User.find(params[:id])
+      erb :user_show
+    end
 
-      erb :show_user
+
+    # to get to edit user form
+    get '/users/:id/edit' do 
+      @user = User.find(params[:id])
+      erb :user_edit
+    end
+
+
+    # edit user profile
+    patch '/users/:id' do 
+      user = User.find(params[:id])
+      user.update({name: params[:name], username: params[:username], profile_pic: params[:profile_pic]})
+      redirect to "/users/#{params[:id]}"
+    end
+
+
+    # delete user profile
+    delete '/users/:id' do 
+      user = User.find(params[:id])
+      user.destroy
+      redirect to '/users'
     end
 
 
@@ -103,11 +124,11 @@ module App
       user = User.new({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
       if user.save
         redirect to '/topics'
-      elsif params{:password} != params[:password_confirmation]
+      elsif params[:password] != params[:password_confirmation]
         @password_message = "Sorry #{params[:name]}, your passwords did not match. Please try again."
         erb :index
       else
-        @username_message = "Sorry #{params[:name]}, this username is already taken."
+        @username_message = "Sorry #{params[:name]}, #{params[:username]} is already a username."
         erb :index
       end
     end
@@ -120,7 +141,8 @@ module App
         session[:user_id] = user.id
         redirect to '/'
       else
-        "wrong info"
+        @incorrect_info_message = 'Your username or password does not match our records, please try again.'
+        erb :index
       end
     end
 

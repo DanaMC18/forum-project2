@@ -34,3 +34,11 @@ header {
   margin: 0 30%;
   margin: 150px auto;
 }
+
+.topic-div {
+  border-top: 1px solid black;
+}
+
+.comment-content {
+  border-top: 1px solid black;
+}

@@ -1,0 +1,48 @@
+<!-- USER'S CURRENT PROFILE -->
+<h3> <%= @user.name %>, your current profile: </h3>
+
+<p> <strong>Name:</strong> <%= @user.name %> </p>
+<p> <strong>Username:</strong> <%= @user.username %> </p>
+<img src=" <%= @user.profile_pic %> ">
+
+
+<!-- EDIT PROFILE FORM -->
+<h3> Edit your profile: </h3>
+
+<form method="post" action="/users/<%= @user.id %>" >
+
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name"> Name: </label>
+  <input type="text" name="name" value="<%= @user.name %>">
+
+  <br>
+
+  <label for="username"> Username: </label>
+  <input type="text" name="username" value="<%= @user.username %>">
+
+  <br>
+
+  <label for="profile_pic"> Profile Picture URL </label>
+  <input type="text" name="profile_pic" value="<%= @user.profile_pic %>">
+
+  <br>
+
+  <input type="submit" value="Save Changes">
+
+</form>
+
+
+<!-- DELETE PROFILE FORM -->
+<form method="post" action="/users/<%= @user.id %>">
+  
+  <input type="hidden" name="_method" value="delete">
+  <button> Delete Profile </button>
+
+</form>
+
+
+<br>
+
+<a href="/users"> Back to Fantastic Peeps </a>
+

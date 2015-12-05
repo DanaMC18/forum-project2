@@ -2,27 +2,32 @@
 <!-- list topics; will be ordered based on vote via server -->
 <% @topics.each do |topic| %>
 
-  <h2>
-    <a href="topics/<%=topic.id%>">
-    <%= topic.title %> </a>
-  </h2>
+  <div class="topic-div">
 
-  <p> By: 
-    <a href="users/<%= topic.user_id%>">
-    <%= topic.user.username %> </a>
-  </p>
+    <h2>
+      <a href="topics/<%=topic.id%>">
+      <%= topic.title %> </a>
+    </h2>
 
-  <p> Comments: <%= topic.comment_count %> </p>
+    <p> <strong>By: </strong>
+      <a href="users/<%= topic.user_id%>">
+      <%= topic.user.username %> </a>
+    </p>
 
-  <p> Votes: <%= topic.vote_num %> </p>
+    <p> <strong> Comments: </strong> <%= topic.comment_count %> </p>
 
-  <form method="POST" action="/topics/<%=topic.id%>/votes">
+    <p> <strong> Votes: </strong> <%= topic.vote_num %> </p>
 
-    <button>Vote up!</button>
+    <!-- VOTE UP BUTTON -->
+    <form method="POST" action="/topics/<%=topic.id%>/votes">
 
-  </form>
+      <button>Vote up!</button>
 
-  <p> Created: <%= topic.pretty_time%> </p>
+    </form>
+
+    <p> <strong> Created: </strong> <%= topic.pretty_time%> </p>
+
+    </div>
 
 <% end %>
 

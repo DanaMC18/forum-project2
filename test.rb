@@ -17,10 +17,10 @@ Vote.destroy_all
 # dana.topics.first.title
 
 
+# migration
 # default profile pics
 # markdown (redcarpet gem)
-# edit: profiles, topics, comments
-# likes on comments
+# edit: profiles, topics, comments  
 # logout
 # styling (ughhhhh)
 # wire frames

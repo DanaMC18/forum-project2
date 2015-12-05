@@ -21,41 +21,51 @@
 
     <% if @comment %>
 
-      <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %> </a>
+      <div class="comment-content">
 
-      <p> At: <%= @comment.pretty_time %> </p>
-      
-      <p> <%= @comment.content %> </p>
+        <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
 
-      <p> <%= @comment.like_count %> </p>
+        <p> At: <%= @comment.pretty_time %> </p>
+        
+        <p> <%= @comment.content %> </p>
 
-      <!-- LIKE COMMENT -->
-      <form method="POST" action="topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
+        <p> <%= @comment.like_count %> </p>
 
-        <button>Like</button>
+        <!-- LIKE COMMENT BUTTON -->
+        <form method="POST" action="topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
 
-      </form>
-      <!--  -->
+          <button>Like</button>
 
+        </form>
+
+        <br>
+
+      </div> <!--comment content -->
 
     <% else %>
 
       <% @comments.each do |comment| %>
 
-        <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %> </a>
+        <div class="comment-content">
 
-        <p> At: <%= comment.pretty_time %> </p>
-        
-        <p> <%= comment.content %> </p>
+          <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
 
-        <p> <%= comment.like_count %> </p>
+          <p> At: <%= comment.pretty_time %> </p>
+          
+          <p> <%= comment.content %> </p>
 
-        <!-- LIKE COMMENT -->
-        <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
+          <p> Likes: <%= comment.like_count %> </p>
 
-        <button>Like</button>
+          <!-- LIKE COMMENT -->
+          <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
 
-        </form>
+          <button>Like</button>
+
+          </form>
+
+          <br>
+
+        </div> <!-- comment content -->
 
       <% end %> <!-- .each -->
 

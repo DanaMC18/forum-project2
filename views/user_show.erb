@@ -1,0 +1,17 @@
+<h2> <%= @profile.username %> </h2>
+
+<img src=" <%= @profile.profile_pic %> ">
+
+<p> <strong> Name: </strong> <%= @profile.name %> </p>
+
+<!-- Only see EDIT PROFILE LINK if profile belongs to user -->
+<% if @profile.id == @user.id %>
+
+  <a href="/users/<%= @user.id %>/edit"> Edit Profile </a>
+  <br>
+
+<% end %>
+
+<a href="/users"> Back to Fantastic Peeps </a>
+<br>
+<a href="/"> Home </a>
