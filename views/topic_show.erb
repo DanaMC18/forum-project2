@@ -3,12 +3,25 @@
 
 <div id="topic-container">
 
+
   <h2><%= @topic.title %></h2>
-  <a href="/users/<%=@topic.user_id%>"> <%= @created_by %> </a>
+
+  <a href="/users/<%=@topic.user_id%>"> <%= @topic.user.username %> </a>
+
 
   <div id="topic-content">
     
     <p> <%= @topic.content %> </p>
+
+
+    <!-- EDIT TOPIC -->
+    <!-- only seen by user who created it -->
+    <% if @topic.user_id == session[:user_id] %>
+
+      <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
+
+    <% end %>
+
 
   </div> <!--content-->
 
@@ -19,9 +32,11 @@
 
     <h3>Comments:</h3>
 
+
     <% if @comment %>
 
       <div class="comment-content">
+
 
         <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
 
@@ -31,12 +46,15 @@
 
         <p> <%= @comment.like_count %> </p>
 
+
         <!-- LIKE COMMENT BUTTON -->
+        <!-- Only if a logged in member can you like -->
         <form method="POST" action="topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
 
           <button>Like</button>
 
         </form>
+
 
         <br>
 
@@ -48,6 +66,7 @@
 
         <div class="comment-content">
 
+
           <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
 
           <p> At: <%= comment.pretty_time %> </p>
@@ -56,12 +75,18 @@
 
           <p> Likes: <%= comment.like_count %> </p>
 
+
           <!-- LIKE COMMENT -->
-          <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
+          <!-- Only if a logged in member can you like -->
+          <% if @user %>
 
-          <button>Like</button>
+            <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
 
-          </form>
+            <button>Like</button>
+
+            </form>
+
+          <% end %>
 
           <br>
 
@@ -76,8 +101,8 @@
     <!-- NEW COMMENT FORM  -->
     <!-- Seen only by someone logged in -->
     <% if @user %>
+     
       <h3> Add Comment: </h3>
-      
 
       <form method="POST" action="/topics/<%= @topic.id %>/comments/new">
 
@@ -88,12 +113,9 @@
 
       </form>
 
-
     <% else %>
 
-
       <h3> Want to join the conversation? <a href="/"> Log In! </a> </h3>
-
 
     <% end %>
 

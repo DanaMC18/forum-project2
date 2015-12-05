@@ -48,16 +48,37 @@ module App
     #read its content and see/add comments
     get '/topics/:id' do 
       @topic = Topic.find(params[:id])
-      @created_by = @topic.user.username
-
+      # @created_by = @topic.user.username
       @comments = Comment.all.where(topic_id: params[:id])
-      
       @user = User.find(session[:user_id]) if session[:user_id]
 
       if @comments.length <= 1
         @comment = @comments.first
       end
       erb :topic_show
+    end
+
+
+    # to get edit topic form
+    get '/topics/:id/edit' do 
+      @topic = Topic.find(params[:id])
+      erb :topic_edit
+    end
+
+
+    # edit topic
+    patch '/topics/:id/edit' do 
+      topic = Topic.find(params[:id])
+      topic.update({title: params[:title], content: params[:content]})
+      redirect to "/topics/#{topic.id}"
+    end
+
+
+    # delete topic
+    delete '/topics/:id' do 
+      topic = Topic.find(params[:id])
+      topic.destroy
+      redirect to '/topics'
     end
 
 
@@ -68,7 +89,6 @@ module App
       Like.create(user_id: user_id, comment_id: comment_id)
       redirect to "topics/#{params[:id]}"
     end
-
 
 
     #to create a new comment
@@ -83,7 +103,6 @@ module App
     #list users page
     get '/users' do 
       @users = User.all
-
       erb :users
     end
 
