@@ -12,6 +12,8 @@ module App
     end
 
 
+    #TOPICS:
+
     #topics page
     #ranked by amount of votes; shows creator and number of comments
     get '/topics' do 
@@ -82,6 +84,8 @@ module App
     end
 
 
+    #COMMENTS:
+
     # like a comment
     post '/topics/:id/comments/:id2/likes' do 
       user_id = session[:user_id] if session[:user_id]
@@ -91,6 +95,29 @@ module App
     end
 
 
+    get '/topics/:id/comments/:id2/edit' do 
+      @comment = Comment.find(params[:id2])
+      @comments = Comment.where(topic_id: params[:id])
+      @topic = Topic.find(params[:id])
+      erb :comment_edit
+    end
+
+
+    #to edit a comment
+    patch '/topics/:id/comments/:id2/edit' do 
+      comment = Comment.find(params[:id2])
+      comment.update(content: params[:content])
+      redirect to "/topics/#{params[:id]}"
+    end
+
+
+    #to delete a comment
+    delete '/topics/:id/comments/:id2' do 
+      comment = Comment.find(params[:id2])
+      comment.destroy
+      redirect to "/topics/#{params[:id]}"
+    end
+
     #to create a new comment
     post '/topics/:id/comments/new' do
       user_id = session[:user_id]
@@ -98,6 +125,10 @@ module App
       comment = Comment.create(content: params[:content], created_at: DateTime.now, user_id: user_id, topic_id: topic_id)
       redirect to "/topics/#{params[:id]}"
     end
+
+
+
+    #USERS:
 
 
     #list users page

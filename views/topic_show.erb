@@ -17,13 +17,13 @@
     <!-- EDIT TOPIC -->
     <!-- only seen by user who created it -->
     <% if @topic.user_id == session[:user_id] %>
-
       <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
-
     <% end %>
 
 
   </div> <!--content-->
+
+
 
 
   <!-- COMMENTS -->
@@ -37,23 +37,37 @@
 
       <div class="comment-content">
 
-
         <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
-
-        <p> At: <%= @comment.pretty_time %> </p>
-        
+        <p><strong> At: </strong> <%= @comment.pretty_time %> </p>
         <p> <%= @comment.content %> </p>
-
-        <p> <%= @comment.like_count %> </p>
+        <p><strong> Likes: </strong> <%= @comment.like_count %> </p>
 
 
         <!-- LIKE COMMENT BUTTON -->
-        <!-- Only if a logged in member can you like -->
-        <form method="POST" action="topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
+        <!-- Only logged in users can like-->
+         <% if @user %>
 
-          <button>Like</button>
+            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
+            <button>Like</button>
+            </form>
 
-        </form>
+          <% end %>
+
+
+          <!-- EDIT AND DELETE COMMENT BUTTONS -->
+          <!-- only seen by user who created comment-->
+          <% if @comment.user_id == session[:user_id] %>
+            <br>
+            <a href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
+            <br>
+
+            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <button> Delete Comment </button>
+            </form>
+            
+            <br>
+          <% end %>
 
 
         <br>
@@ -66,27 +80,38 @@
 
         <div class="comment-content">
 
-
           <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
-
-          <p> At: <%= comment.pretty_time %> </p>
-          
+          <p><strong> At: </strong> <%= comment.pretty_time %> </p>
           <p> <%= comment.content %> </p>
-
-          <p> Likes: <%= comment.like_count %> </p>
+          <p><strong> Likes: </strong> <%= comment.like_count %> </p>
 
 
           <!-- LIKE COMMENT -->
-          <!-- Only if a logged in member can you like -->
+          <!-- Only logged in users can like-->
           <% if @user %>
 
-            <form method="POST" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
-
+            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
             <button>Like</button>
-
             </form>
 
           <% end %>
+
+
+          <!-- EDIT AND DELETE COMMENT BUTTONS -->
+          <!-- only seen by user who created comment-->
+          <% if comment.user_id == session[:user_id] %>
+            <br>
+            <a href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
+            <br>
+
+            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <button> Delete Comment </button>
+            </form>
+            
+            <br>
+          <% end %>
+
 
           <br>
 
@@ -98,6 +123,7 @@
 
     
 
+
     <!-- NEW COMMENT FORM  -->
     <!-- Seen only by someone logged in -->
     <% if @user %>
@@ -107,7 +133,7 @@
       <form method="POST" action="/topics/<%= @topic.id %>/comments/new">
 
         <p> Write Your Post Below </p>
-        <textarea name="content" cols="100" rows="20"></textarea>
+        <textarea name="content" cols="100" rows="10"></textarea>
         <br>
         <input type="submit" value="Add Comment">
 
