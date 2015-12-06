@@ -12,9 +12,8 @@ var $LoginCloseBtn;
 var $registerModal;
 var $loginModal;
 
+var $editCommentForms;
 var $editCommentBtns;
-
-var $editCommentDivs;
 
 // jquery
 $(document).ready(function(){
@@ -33,11 +32,9 @@ $LoginCloseBtn = $('#login-close-btn');
 $registerModal = $('#register');
 $loginModal = $('#login');
 
-// $editCommentBtns = $('.edit-comment-btn');
-// $closeCommentBtns = $('.close-comment-btn');
-
-// $editCommentDivs = $('.edit-comment');
-
+$editCommentForms = $('.edit-comment-form');
+$editCommentBtns = $('button:contains("Edit Comment")');
+$closeCommentBtns = $('button:contains("Close")');
 
 // create functions to toggle modals
 var toggleRegisterModal = function (){
@@ -48,9 +45,12 @@ var toggleLoginModal = function (){
   $loginModal.toggle();
 }
 
-// var toggleEditCommentDiv = function (){
-//   $editCommentDivs.toggle();
-// }
+var toggleCommentEditor = function(){
+  $editCommentForms.toggle();
+}
+
+
+ 
 
 // event listeners on modals
 $mainRegBtn.on('click', toggleRegisterModal);
@@ -62,8 +62,8 @@ $subLoginBtn.on('click', toggleLoginModal);
 $RegCloseBtn.on('click', toggleRegisterModal);
 $LoginCloseBtn.on('click', toggleLoginModal);
 
-// $editCommentBtns.on('click', toggleEditCommentDiv);
-// $closeCommentBtns.on('click', toggleEditCommentDiv);
+// $editCommentBtns.on('click', toggleCommentEditor);
+// $closeCommentBtns.on('click', toggleCommentEditor);
 
 });
 

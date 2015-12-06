@@ -19,9 +19,7 @@ Vote.destroy_all
 
 # migration
 # default profile pics
-# markdown (redcarpet gem)
-# edit: profiles, topics, comments  
-# logout
+# markdown (redcarpet gem) 
 # styling (ughhhhh)
 # wire frames
 

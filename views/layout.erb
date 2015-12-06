@@ -9,6 +9,31 @@
 
 <body>
 
+  <header>
+
+    <h1> Fantastic Peeps And Where to Find Them </h1>
+
+    <a href="/"> Home </a>
+    <a href="/topics"> Room of Requirement </a>
+
+    <% if session[:user_id] %>
+
+    <a href="/users"> Fantastic Peeps </a>
+
+    <form method="post" action="/sessions">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Logout">
+    </form>
+
+    <% else %>
+
+    <a href="/login">Login!</a>
+    <a href="/login">Sign Up!</a>
+
+    <% end %>
+
+  </header>
+
   <%= yield %>
 
 </body>

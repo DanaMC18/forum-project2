@@ -181,6 +181,11 @@ module App
     end
 
 
+    get '/login' do 
+      erb :login
+    end
+
+
     # user login
     post '/sessions' do 
       user = User.find_by({username: params[:username]})
