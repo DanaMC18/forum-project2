@@ -1,3 +1,5 @@
+<a href="/topics/<%= @comment.topic_id %>">Back</a>
+
 <h2> Current Comment: </h2>
 
 <p> <%= @comment.content %> </p>
@@ -12,4 +14,12 @@
     <input type="submit" value="Edit Comment">
     <button> Close </button>
 
+</form>
+
+<br>
+
+<!-- DELETE COMMENT -->
+<form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <button> Delete Comment </button>
 </form>

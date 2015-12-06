@@ -11,12 +11,16 @@ users = [
     name: 'Dana', 
     username: 'DanaMC18', 
     password_digest: '$2a$10$7k79S7LGLsbnY50EtEM6B.h6HqKzwX5cEFFHyXMzCkqcB6WjdZ9lK',
+    # password: 'password123',
+    # password_confirmation: 'password123',
     profile_pic: 'https://s-media-cache-ak0.pinimg.com/236x/ac/27/0a/ac270a6e86b61cbfb4ade530875ec7a6.jpg'
   },
   {
     name: 'D$',
     username: 'D-Money',
     password_digest: '$2a$10$7k79S7LGLsbnY50EtEM6B.h6HqKzwX5cEFFHyXMzCkqcB6WjdZ9lK',
+    # password: 'password123',
+    # password_confirmation: 'password123',
     profile_pic: 'http://images.clipartpanda.com/green-dollar-sign-clipart-4T9gK5qTE.jpeg'
   }
 ]
@@ -44,10 +48,10 @@ Topic.create(topics)
 
 comments = [
   {
-  content: 'Thanks for making this sweet site, Dana!',
-  created_at: DateTime.new,
-  user_id: 2,
-  topic_id: 1
+    content: 'Thanks for making this sweet site, Dana!',
+    created_at: DateTime.new,
+    user_id: 2,
+    topic_id: 1
   },
   {
     content: '@D-Money yeah this forum is the bee\'s knees!',

@@ -1,5 +1,5 @@
-
-<a href="/topics"> Back to Topics </a>
+<br>
+<a href="/topics"> Back to Room of Requirement </a>
 
 <div id="topic-container">
 
@@ -54,20 +54,11 @@
           <% end %>
 
 
-          <!-- EDIT AND DELETE COMMENT BUTTONS -->
+          <!-- EDIT COMMENT -->
           <!-- only seen by user who created comment-->
           <% if @comment.user_id == session[:user_id] %>
             <br>
             <a href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
-            <br>
-
-            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
-              <input type="hidden" name="_method" value="delete">
-              <button> Delete Comment </button>
-            </form>
-
-            <br>
-
           <% end %>
 
         <br>
@@ -97,20 +88,11 @@
           <% end %>
 
 
-          <!-- EDIT AND DELETE COMMENT BUTTONS -->
+          <!-- EDIT COMMENT -->
           <!-- only seen by user who created comment-->
           <% if comment.user_id == session[:user_id] %>
             <br>
             <a href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
-            <br>
-
-            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>">
-              <input type="hidden" name="_method" value="delete">
-              <button> Delete Comment </button>
-            </form>
-            
-            <br>
-
           <% end %>
 
           <br>

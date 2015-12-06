@@ -11,26 +11,33 @@
 
   <header>
 
-    <h1> Fantastic Peeps And Where to Find Them </h1>
+    <h1 id="h1-1"> Fantastic Peeps </h1> 
+    <h1 id="h1-2"> And Where to Find Them </h1>
 
-    <a href="/"> Home </a>
-    <a href="/topics"> Room of Requirement </a>
+    <div id="menu-bar">
 
-    <% if session[:user_id] %>
+      <a href="/"> Home </a>
+      <a href="/topics"> Room of Requirement </a>
 
-    <a href="/users"> Fantastic Peeps </a>
+      <% if session[:user_id] %>
 
-    <form method="post" action="/sessions">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Logout">
-    </form>
+        <a href="/users"> Fantastic Peeps </a>
 
-    <% else %>
+        <form method="post" action="/sessions">
+          <input type="hidden" name="_method" value="delete">
+          <input id="logout-btn" type="submit" value="Logout">
+        </form>
 
-    <a href="/login">Login!</a>
-    <a href="/login">Sign Up!</a>
+      <% else %>
 
-    <% end %>
+        <div id="login-menu">
+          <a href="/login">Login!</a>
+          <a href="/login">Sign Up!</a>
+        </div>
+
+      <% end %>
+
+    </div>
 
   </header>
 

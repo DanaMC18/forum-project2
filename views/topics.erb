@@ -1,3 +1,8 @@
+<br>
+<!-- Link to New Topic form; only seen if user is logged in -->
+<% if @user %>
+  <a href="/topics/new">Create a New Topic</a>
+<% end %>
 
 <!-- list topics; will be ordered based on vote via server -->
 <% @topics.each do |topic| %>
@@ -30,19 +35,6 @@
     </div>
 
 <% end %>
-
-<!-- Link to New Topic form; only seen if user is logged in -->
-<% if @user %>
-  <a href="/topics/new">Create a New Topic</a>
-<% end %>
-
-<br>
-
-<a href="/users"> Fantastic Peeps </a>
-
-<br>
-
-<a href="/"> Home </a>
 
 
 

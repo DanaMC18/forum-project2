@@ -1,0 +1,46 @@
+body {
+  font-family: fantasy;
+  background-image: url("http://orig05.deviantart.net/5589/f/2011/142/2/7/harry_potter_wallpaper_8_by_maxoooow-d3gyeig.jpg");
+  background-position: cover;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  color: #CCEADD;
+}
+
+a {
+  color: #CCEADD;
+}
+
+.index-page {
+  padding: 1%;
+}
+
+.close-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  float: right;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-content {
+  position: relative;
+  background-position: center;
+  background-color: white;
+  width: 40%;
+  margin: 0 30%;
+  margin: 150px auto;
+}

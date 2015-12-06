@@ -22,4 +22,4 @@ Vote.destroy_all
 # markdown (redcarpet gem) 
 # styling (ughhhhh)
 # wire frames
-
+# still logging in with incorrect password....WHY!?
