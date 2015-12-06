@@ -8,14 +8,17 @@
 
     <a href="/topics"> Enter!</a>
     <br>
-    <a href="/logout"> Log Out </a> 
-    <br>
     <a href="/users"> Fantastic Peeps </a>
+    <br>
+
+    <form method="post" action="/sessions">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Logout">
+    </form>
 
   <% else %>
     
     <a href="/topics">Enter!</a>
-    
     <br>
 
     <p>Not a member? 
@@ -28,7 +31,6 @@
 
   <% end %>
 
-  <!-- LINK TO BOARDS -->
   <br>
 
 </header>

@@ -38,7 +38,7 @@ module App
     end
 
 
-    #to createa a new topic
+    #to create a new topic
     post '/topics/new' do 
       user_id = session[:user_id]
       Topic.create(title: params[:title], content: params[:content], created_at: DateTime.now, user_id: user_id)
@@ -47,13 +47,10 @@ module App
 
 
     #to enter a topic
-    #read its content and see/add comments
     get '/topics/:id' do 
       @topic = Topic.find(params[:id])
-      # @created_by = @topic.user.username
       @comments = Comment.all.where(topic_id: params[:id])
       @user = User.find(session[:user_id]) if session[:user_id]
-
       if @comments.length <= 1
         @comment = @comments.first
       end
@@ -95,6 +92,7 @@ module App
     end
 
 
+    # get to edit comment form
     get '/topics/:id/comments/:id2/edit' do 
       @comment = Comment.find(params[:id2])
       @comments = Comment.where(topic_id: params[:id])
@@ -103,7 +101,7 @@ module App
     end
 
 
-    #to edit a comment
+    # to update comment
     patch '/topics/:id/comments/:id2/edit' do 
       comment = Comment.find(params[:id2])
       comment.update(content: params[:content])
@@ -118,6 +116,7 @@ module App
       redirect to "/topics/#{params[:id]}"
     end
 
+
     #to create a new comment
     post '/topics/:id/comments/new' do
       user_id = session[:user_id]
@@ -127,11 +126,9 @@ module App
     end
 
 
-
     #USERS:
 
-
-    #list users page
+    #list users
     get '/users' do 
       @users = User.all
       erb :users
@@ -169,7 +166,7 @@ module App
     end
 
 
-    #Registration Modal
+    # user registration 
     post '/users' do 
       user = User.new({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
       if user.save
@@ -184,7 +181,7 @@ module App
     end
 
 
-    #Login Modal
+    # user login
     post '/sessions' do 
       user = User.find_by({username: params[:username]})
       if user
@@ -197,7 +194,10 @@ module App
     end
 
 
-    post '/logout' do 
+    # user logout
+    delete '/sessions' do 
+      session[:user_id] = nil
+      redirect to '/'
     end
 
 
