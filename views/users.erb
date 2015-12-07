@@ -1,14 +1,11 @@
+
+<!-- list USERNAMES as links to user profiles -->
 <div class="users-div">
 
   <h2>Fantastic Peeps! </h2>
 
   <% @users.each do |user| %>
-
-    <h3> 
-      <a href="/users/<%= user.id %>"> 
-      <%= user.username %> </a>
-    </h3>
-
+    <h3> <a href="/users/<%= user.id %>"> <%= user.username %> </a> </h3>
   <% end %>
  
 </div>

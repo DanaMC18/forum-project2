@@ -125,8 +125,12 @@ module App
 
     #list users
     get "/users" do 
-      @users = User.all
-      erb :users
+      if session[:user_id]
+        @users = User.all
+        erb :users
+      else
+        redirect to "/"
+      end
     end
 
 
@@ -141,7 +145,13 @@ module App
     # to get to edit user form
     get "/users/:id/edit" do 
       @user = User.find(params[:id])
-      erb :user_edit
+      if session[:user_id] == @user.id
+        erb :user_edit
+      elsif session[:user_id]
+        redirect to "/users"
+      else
+        redirect to "/"
+      end
     end
 
 
@@ -175,11 +185,6 @@ module App
         @username_message = "Sorry #{params[:name]}, #{params[:username]} is already a username."
         erb :topics
       end
-    end
-
-
-    get "/login" do 
-      erb :login
     end
 
 

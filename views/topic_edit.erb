@@ -12,39 +12,37 @@
 
   <div class="edit-form">
 
-  <h3> Edit below </h3>
+    <h3> Edit below </h3>
 
-<!-- EDIT FORM -->
-<form method="post" action="/topics/<%= @topic.id %>/edit">
+    <!-- EDIT FORM -->
+    <form method="post" action="/topics/<%= @topic.id %>/edit">
+      <input type="hidden" name="_method" value="patch">
 
-  <input type="hidden" name="_method" value="patch">
+      <label for="title"> <strong> Title: </strong> </label>
+      <br>
+      <textarea name="title" cols="100" rows="1"><%= @topic.title %></textarea>
 
-  <label for="title"> <strong> Title: </strong> </label>
-  <br>
-  <textarea name="title" cols="100" rows="1"><%= @topic.title %></textarea>
+      <br>
 
-  <br>
+      <label for="content"> <strong> Content: </strong> </label>
+      <br>
+      <textarea name="content" cols="100" rows="20"><%= @topic.content %></textarea>
 
-  <label for="content"> <strong> Content: </strong> </label>
-  <br>
-  <textarea name="content" cols="100" rows="20"><%= @topic.content %></textarea>
+      <br>
 
-  <br>
+      <button> Save </button>
+    </form>
 
-  <button> Save </button>
-
-</form>
-
-<br>
+    <br>
 
 
-<!-- DELETE BUTTON -->
-<form method="post" action="/topics/<%= @topic.id %>">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete</button>
-</form>
+    <!-- DELETE BUTTON -->
+    <form method="post" action="/topics/<%= @topic.id %>">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
 
-</div>
+  </div> <!-- edit form -->
 
 </div> <!--topic-container-->
 

@@ -1,53 +1,44 @@
 <div class="users-div">
 
-<!-- USER'S CURRENT PROFILE -->
-<h2> <%= @user.name %>, your current profile: </h2>
-
-<p> <img src=" <%= @user.profile_pic %> "> </p>
-
-<p> <strong>Name:</strong> <%= @user.name %> </p>
-<p> <strong>Username:</strong> <%= @user.username %> </p>
-
-
-  <div class="edit-form">
-
-  <h3> Edit your profile: </h3>
+  <!-- USER'S CURRENT PROFILE -->
+  <h2> <%= @user.name %>, your current profile: </h2>
+  <p> <img src=" <%= @user.profile_pic %> "> </p>
+  <p> <strong>Name:</strong> <%= @user.name %> </p>
+  <p> <strong>Username:</strong> <%= @user.username %> </p>
 
 
   <!-- EDIT PROFILE FORM -->
+  <div class="edit-form">
 
-  <form method="post" action="/users/<%= @user.id %>" >
+    <h3> Edit your profile: </h3>
 
-    <input type="hidden" name="_method" value="patch">
+    <form method="post" action="/users/<%= @user.id %>" >
+      <input type="hidden" name="_method" value="patch">
 
-    <label for="name"> Name: </label>
-    <input type="text" name="name" value="<%= @user.name %>">
+      <label for="name"> Name: </label>
+      <input type="text" name="name" value="<%= @user.name %>">
 
-    <br>
+      <br>
 
-    <label for="username"> Username: </label>
-    <input type="text" name="username" value="<%= @user.username %>">
+      <label for="username"> Username: </label>
+      <input type="text" name="username" value="<%= @user.username %>">
 
-    <br>
+      <br>
 
-    <label for="profile_pic"> Profile Picture URL: </label>
-    <textarea name="profile_pic" cols="100" rows="1"> <%= @user.profile_pic %> </textarea>
+      <label for="profile_pic"> Profile Picture URL: </label>
+      <textarea name="profile_pic" cols="100" rows="1"> <%= @user.profile_pic %> </textarea>
 
-    <br>
-
-   <button> Save </button>
-
-  </form>
+      <br>
+      <button> Save </button>
+    </form>
 
 
-  <!-- DELETE PROFILE FORM -->
-  <form method="post" action="/users/<%= @user.id %>">
-    
-    <input type="hidden" name="_method" value="delete">
-    <button> Delete Profile </button>
+    <!-- DELETE PROFILE FORM -->
+    <form method="post" action="/users/<%= @user.id %>"> 
+      <input type="hidden" name="_method" value="delete">
+      <button> Delete Profile </button>
+    </form>
 
-  </form>
-
-  </div> <!--edit comment container -->
+  </div> <!--edit form -->
 
 </div> <!-- users-div -->

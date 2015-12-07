@@ -9,26 +9,24 @@
       <%= Markdown.new(@comment.content).to_html%>
     </div>
 
-<div class="edit-form">
+  <div class="edit-form">
 
-  <h3> Edit below </h3>
+    <h3> Edit below </h3>
 
-  <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit">
-
+    <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit">
       <input type="hidden" name="_method" value="patch">
       <textarea name="content" cols="100" rows="10"><%= @comment.content %></textarea>
       <br>
-      <button> Save </button>
-      
-  </form>
+      <button> Save </button>    
+    </form>
 
-  <br>
+    <br>
 
-  <!-- DELETE COMMENT -->
-  <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
-    <input type="hidden" name="_method" value="delete">
-    <button> Delete Comment </button>
-  </form>
+    <!-- DELETE COMMENT -->
+    <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
+      <input type="hidden" name="_method" value="delete">
+      <button> Delete Comment </button>
+    </form>
 
-</div> <!-- edit form -->
+  </div> <!-- edit form -->
 </div> <!-- edit container -->

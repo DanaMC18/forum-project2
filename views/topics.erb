@@ -1,41 +1,40 @@
 <br>
-<!-- Link to New Topic form; only seen if user is logged in -->
 
+<!-- Link to NEW TOPIC form; only seen if user is logged in -->
 <div id="new-topic">
   <% if @user %>
     <a href="/topics/new">Create a New Topic</a>
   <% end %>
 </div>
 
-<!-- list topics; will be ordered based on vote via server -->
+
+<!-- TOPICS: list will be ordered based on VOTES via server -->
 <% @topics.each do |topic| %>
 
   <div class="topic-div">
 
-    <h2>
-      <a href="topics/<%=topic.id%>">
-      <%= topic.title %> </a>
-    </h2>
+    <h2> <a href="topics/<%=topic.id%>"> <%= topic.title %> </a> </h2>
 
-
-    <p> <strong> By: </strong>
-      <a href="users/<%= topic.user_id%>">
-      <%= topic.user.username %> </a>
-    <strong> Created: </strong> <%= topic.pretty_time%> </p>
+    <p> 
+      <strong> By: </strong> <a href="users/<%= topic.user_id%>"> <%= topic.user.username %> </a>
+      <strong> Created: </strong> <%= topic.pretty_time%> 
+    </p>
 
     <p> <strong> Comments: </strong> <%= topic.comment_count %> </p>
 
 
+    <!-- VOTES -->
+    <!-- VOTE UP BUTTON -->
+    <!-- only logged in users can vote -->
     <div class="votes-div">
 
       <p> <strong> Votes: </strong> <%= topic.vote_num %> </p>
 
-      <!-- VOTE UP BUTTON -->
-      <form method="POST" action="/topics/<%=topic.id%>/votes">
-
-        <button>Vote up!</button>
-
-      </form>
+      <% if @user %>
+        <form method="POST" action="/topics/<%=topic.id%>/votes">
+          <button>Vote up!</button>
+        </form>
+      <% end %>
       
     </div> <!--votes div -->
 

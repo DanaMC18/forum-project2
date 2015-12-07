@@ -12,8 +12,9 @@
     <%= Markdown.new(@topic.content).to_html%>
   </div>
 
-  <!-- EDIT TOPIC -->
-  <!-- only seen by user who created it -->
+
+  <!-- EDIT TOPIC BUTTON -->
+  <!-- only seen by user who created topic -->
   <% if @topic.user_id == session[:user_id] %>
     <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
   <% else %>
@@ -33,6 +34,7 @@
       <div class="comment-container">
 
         <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
+        
         <p><strong> At: </strong> <%= @comment.pretty_time %> </p>
 
         <div class="comment-content">
@@ -49,24 +51,24 @@
           <a class="hidden" href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
         <% end %>
 
+
+        <!-- LIKES -->
+        <!-- LIKE COMMENT BUTTON -->
+        <!-- Only logged in users can like-->
         <div class="likes-div">
 
-          <p><strong> Likes: </strong> <%= @comment.like_count %> </p>
+          <p> <strong> Likes: </strong> <%= @comment.like_count %> </p>
 
-
-          <!-- LIKE COMMENT BUTTON -->
-          <!-- Only logged in users can like-->
            <% if @user %>
-
               <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
               <button>Like</button>
               </form>
-
             <% end %>
 
-          </div> <!--likes div -->
+          </div> <!--likes-div -->
 
       </div> <!--comment container -->
+
 
     <% else %>
 
@@ -76,6 +78,7 @@
         <div class="comment-container">
 
           <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
+          
           <p><strong> At: </strong> <%= comment.pretty_time %> </p>
 
           <div class="comment-content">
@@ -92,19 +95,18 @@
             <a class="hidden" href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
           <% end %>
 
+
+          <!-- LIKES -->
+          <!-- LIKE COMMENT BUTTON -->
+          <!-- Only logged in users can like-->
           <div class="likes-div">
 
-            <p><strong> Likes: </strong> <%= comment.like_count %> </p>
+            <p> <strong> Likes: </strong> <%= comment.like_count %> </p>
 
-
-            <!-- LIKE COMMENT -->
-            <!-- Only logged in users can like-->
             <% if @user %>
-
               <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
               <button>Like</button>
               </form>
-
             <% end %>
 
           </div> <!-- likes div -->
@@ -117,33 +119,29 @@
 
     
 
-
-    <!-- NEW COMMENT FORM  -->
+    <!-- ADD COMMENT -->
     <!-- Seen only by someone logged in -->
-    <% if @user %>
-     
-     <div class="add-comment">
-      <h3> Add Comment: </h3>
+    <div class="add-comment">
 
-      <form method="post" action="/topics/<%= @topic.id %>/comments/new">
+      <% if @user %>
 
-        <p> Write Your Post Below </p>
-        <textarea name="content" cols="100" rows="10"></textarea>
-        <br>
-        <button>Add Comment</button>
+        <h3> Add Comment: </h3>
 
-      </form>
+        <form method="post" action="/topics/<%= @topic.id %>/comments/new">
+          <textarea name="content" cols="100" rows="10"></textarea>
+          <br>
+          <button>Add Comment</button>
+        </form>
 
-    <% else %>
+      <% else %>
 
-      <div class="comment-login">
-        <h3> Want to join the conversation? <a id="comment-login" href="#"> Log In! </a> </h3>
-      </div>
+        <div class="comment-login">
+          <h3> Want to join the conversation? <a id="comment-login" href="#"> Log In! </a> </h3>
+        </div>
 
-      </div> <!-- add comment -->
+      <% end %>
 
-    <% end %>
-
+    </div> <!-- add comment -->
 
   </div> <!--comments-container-->
 

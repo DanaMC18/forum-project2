@@ -36,20 +36,15 @@
 
       <% end %>
 
-    </div>
+    </div> <!-- menu bar -->
 
+    <!-- LOGIN/REGISTRATION ERRORS -->
     <% if @password_message %>
-     
       <h3> <%= @password_message %> </h3>
-
     <% elsif @username_message %>
-     
       <h3> <%= @username_message %> </h3>
-
     <% elsif @incorrect_info %>
-
       <h3> <%= @incorrect_info %> </h3>
-
     <% end %>
 
   </header>
@@ -65,7 +60,9 @@
   </footer>
 
 </body>
+
 </html>
+
 
 <!-- REGISTER FORM MODAL -->
 <div id="register" class="modal-container">
