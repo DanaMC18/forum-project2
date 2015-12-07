@@ -6,7 +6,7 @@
 
   <a href="/users/<%=@topic.user_id%>"> <%= @topic.user.username %> </a>
 
-  <p> <strong> Created: </strong> <%= @topic.created_at %> </p>
+  <p> <strong> Created: </strong> <%= @topic.pretty_time %> </p>
 
   <div class="topic-content"> 
     <%= Markdown.new(@topic.content).to_html%>

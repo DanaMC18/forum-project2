@@ -135,6 +135,7 @@ h2 {
 
 .topic-div,
 .topic-container,
+.new-topic-container,
 .users-div {
   border: 2px solid #35185A;
   width: 80%;
@@ -241,7 +242,7 @@ button:hover,
 
 
 /* USERS */
-
+.new-topic-container form,
 .users-div a,
 .users-div p {
   margin-left: 5%;

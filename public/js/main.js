@@ -1,44 +1,19 @@
-
-// name variables
-var $mainRegBtn;
-var $mainLoginBtn;
-
-var $subRegBtn;
-var $subLoginBtn;
-
-var $RegCloseBtn;
-var $LoginCloseBtn;
-
-var $registerModal;
-var $loginModal;
-
-var $loginCommentBtn;
-
-// var $editCommentForms;
-// var $editCommentBtns;
-
 // jquery
 $(document).ready(function(){
 
 
 //assign variables
-$mainRegBtn = $('#main-reg-btn');
-$mainLoginBtn = $('#main-login-btn');
+var $mainRegBtn = $('#main-reg-btn');
+var $mainLoginBtn = $('#main-login-btn');
 
-$subRegBtn = $('#sub-reg-btn');
-$subLoginBtn = $('#sub-login-btn');
+var $RegCloseBtn = $('#reg-close-btn');
+var $LoginCloseBtn = $('#login-close-btn');
 
-$RegCloseBtn = $('#reg-close-btn');
-$LoginCloseBtn = $('#login-close-btn');
+var $registerModal = $('#register');
+var $loginModal = $('#login');
 
-$registerModal = $('#register');
-$loginModal = $('#login');
+var $loginCommentBtn = $('#comment-login');
 
-$loginCommentBtn = $('#comment-login');
-
-// $editCommentForms = $('.edit-comment-form');
-// $editCommentBtns = $('button:contains("Edit Comment")');
-// $closeCommentBtns = $('button:contains("Close")');
 
 // create functions to toggle modals
 var toggleRegisterModal = function (){
@@ -57,16 +32,10 @@ var toggleCommentEditor = function(){
 $mainRegBtn.on('click', toggleRegisterModal);
 $mainLoginBtn.on('click', toggleLoginModal);
 
-$subRegBtn.on('click', toggleRegisterModal);
-$subLoginBtn.on('click', toggleLoginModal);
-
 $RegCloseBtn.on('click', toggleRegisterModal);
 $LoginCloseBtn.on('click', toggleLoginModal);
 
 $loginCommentBtn.on('click', toggleLoginModal);
-
-// $editCommentBtns.on('click', toggleCommentEditor);
-// $closeCommentBtns.on('click', toggleCommentEditor);
 
 });
 

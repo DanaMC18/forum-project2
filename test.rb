@@ -16,7 +16,4 @@ Vote.destroy_all
 # dana.topics
 # dana.topics.first.title
 
-
-# default profile pics
-# wire frames
-# still logging in with incorrect password....WHY!?
+# WIRE FRAMES

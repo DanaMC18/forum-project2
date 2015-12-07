@@ -7,9 +7,9 @@ class Comment < ActiveRecord::Base
   def like_count
     self.likes.count
   end
-
-  def pretty_time
-    self.created_at.strftime('%A, %d %b %Y %l:%M %p')
-  end
   
+  def pretty_time
+    self.created_at.strftime('%b %d, %Y')
+  end
+
 end
