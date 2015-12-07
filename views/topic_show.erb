@@ -109,7 +109,7 @@
      <div class="add-comment">
       <h3> Add Comment: </h3>
 
-      <form method="POST" action="/topics/<%= @topic.id %>/comments/new">
+      <form method="post" action="/topics/<%= @topic.id %>/comments/new">
 
         <p> Write Your Post Below </p>
         <textarea name="content" cols="100" rows="10"></textarea>
@@ -120,7 +120,7 @@
 
     <% else %>
 
-      <h3> Want to join the conversation? <a href="/"> Log In! </a> </h3>
+      <h3> Want to join the conversation? <a id="comment-login" href="#"> Log In! </a> </h3>
 
       </div>
 

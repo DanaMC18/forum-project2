@@ -1,36 +1,37 @@
+<br>
+<a class= "back-btn" href="/topics/<%= @topic.id %>"> Back </a>
 
 <!-- TOPIC in its current form -->
-<div id="topic-container">
+<div class="topic-container">
 
   <h2><%= @topic.title %></h2>
 
-  <div id="topic-content">
+  <div class="topic-content">
     
     <p> <%= @topic.content %> </p>
 
   </div> <!--topic-content-->
 
-</div> <!--topic-container-->
-
 
 <!-- EDIT FORM -->
-<form method="post" action="/topics/<%= @topic.id %>/edit">
+
+<form class="topic-form" method="post" action="/topics/<%= @topic.id %>/edit">
 
   <input type="hidden" name="_method" value="patch">
 
-  <label for="title"> Title: </label>
+  <label for="title"> <strong> Title: </strong> </label>
   <br>
   <textarea name="title" cols="100" rows="1"><%= @topic.title %></textarea>
 
   <br>
 
-  <label for="content"> Content: </label>
+  <label for="content"> <strong> Content: </strong> </label>
   <br>
   <textarea name="content" cols="100" rows="20"><%= @topic.content %></textarea>
 
   <br>
 
-  <input type="submit" value="Save">
+  <button> Save </button>
 
 </form>
 
@@ -38,14 +39,12 @@
 
 
 <!-- DELETE BUTTON -->
-<form method="post" action="/topics/<%= @topic.id %>">
+<form class="topic-form" method="post" action="/topics/<%= @topic.id %>">
   <input type="hidden" name="_method" value="delete">
   <button>Delete</button>
 </form>
 
-<a href="/topics/<%= @topic.id %>"> Back to <%= @topic.title %> </a>
-
-
+</div> <!--topic-container-->
 
 
 

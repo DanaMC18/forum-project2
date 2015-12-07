@@ -1,25 +1,29 @@
-<a href="/topics/<%= @comment.topic_id %>">Back</a>
-
-<h2> Current Comment: </h2>
-
-<p> <%= @comment.content %> </p>
-
-<h3> Edit below </h3>
-
-<form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit">
-
-    <input type="hidden" name="_method" value="patch">
-    <textarea name="content" cols="100" rows="10"><%= @comment.content %></textarea>
-    <br>
-    <input type="submit" value="Edit Comment">
-    <button> Close </button>
-
-</form>
-
+<br>
+<a class="back-btn" href="/topics/<%= @comment.topic_id %>">Back</a>
 <br>
 
-<!-- DELETE COMMENT -->
-<form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
-  <input type="hidden" name="_method" value="delete">
-  <button> Delete Comment </button>
-</form>
+<div class="edit-comment-container">
+  <h2> Current Comment: </h2>
+
+    <p class="comment-content"> <%= @comment.content %> </p>
+
+  </div>
+
+  <h3> Edit below </h3>
+
+  <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit">
+
+      <input type="hidden" name="_method" value="patch">
+      <textarea name="content" cols="100" rows="10"><%= @comment.content %></textarea>
+      <br>
+      <button> Save </button>
+      
+  </form>
+
+  <br>
+
+  <!-- DELETE COMMENT -->
+  <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <button> Delete Comment </button>
+  </form>

@@ -20,8 +20,7 @@ else
   }
 end 
 
-ActiveRecord::Base.establish_connection(config)
-)
+ActiveRecord::Base.establish_connection(db_config)
 
 Dir.glob("models/*.rb").each do |path|
   require_relative "../#{path}"

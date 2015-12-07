@@ -102,6 +102,7 @@ header h3 {
   margin: 150px auto;
 }
 
+
 /* HOME PAGE */
 
 #new-topic {
@@ -192,7 +193,7 @@ header h3 {
   margin: 0 auto;
 }
 
-.topic-container h2 {
+h2 {
   margin-top: 0px;
   margin-bottom: .5%;
   background: #35185A;
@@ -203,7 +204,6 @@ header h3 {
 
 .topic-container a {
   padding: 2%;
- /* margin-top: 10%;*/
 }
 
 .topic-container a:hover {
@@ -218,6 +218,9 @@ header h3 {
   padding: 1%;
   border: 1px solid #35185A;
 }
+
+
+/* COMMENTS */
 
 .comment-container {
   margin-top: 1%;
@@ -252,7 +255,7 @@ header h3 {
   display: inline;
 }
 
-.topic-container button:hover {
+button:hover {
   color: #705395;
   font-weight: bolder;
 }
@@ -262,6 +265,26 @@ header h3 {
   padding-bottom: 1%;
 }
 
+
+/* EDIT TOPIC */
+
+.topic-form {
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+
+/*EDIT COMMENT*/
+
+.back-btn:hover {
+  color: #705395;
+  font-weight: bolder;
+}
+
+.edit-comment-container {
+  border: 1px solid #35185A;
+  background: #AAAAAA;
+}
 
 
 
