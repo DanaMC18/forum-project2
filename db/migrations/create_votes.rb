@@ -1,6 +1,6 @@
 require_relative "../config"
 
-class CreateVotes < ActiveRecord::Migrations
+class CreateVotes < ActiveRecord::Migration
   def up
     create_table :votes do |t|
       t.integer(:user_id)
