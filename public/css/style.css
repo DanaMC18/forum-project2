@@ -247,7 +247,8 @@ a:hover {
 }
 
 button:hover,
-.comment-login a:hover {
+.comment-login a:hover, 
+.users-div a:hover {
   color: #705395;
   font-weight: bolder;
 }
@@ -272,7 +273,7 @@ button:hover,
 }
 
 .users-div a {
-  color: #705395;
+  color: #35185A
 }
 
 
