@@ -37,4 +37,4 @@
 8. Active Record
 
 ##Link to App!
-[*Accio* Peeps!] https://fantastic-peeps.herokuapp.com/
+[*Accio* Peeps!](https://fantastic-peeps.herokuapp.com/)
