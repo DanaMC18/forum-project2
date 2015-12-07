@@ -17,9 +17,7 @@ Vote.destroy_all
 # dana.topics.first.title
 
 
-# migration
 # default profile pics
 # markdown (redcarpet gem) 
-# styling (ughhhhh)
 # wire frames
 # still logging in with incorrect password....WHY!?

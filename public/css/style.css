@@ -191,6 +191,7 @@ a:hover {
 
 
 /* SHOW TOPIC PAGE */
+/* SHOWS COMMENT TOO*/
 
 .topic-container a {
   color: #705395;
@@ -206,17 +207,19 @@ a:hover {
   border: 1px solid #35185A;
 }
 
+.topic-container p,
+.comment-container p {
+  padding-left: 2%;
+}
 
-/* COMMENTS */
+.hidden {
+  visibility: hidden;
+}
 
 .comment-container {
   margin-top: 1%;
   border-bottom: 1px solid #35185A;
   margin-bottom: .5%;
-}
-
-.comment-container p {
-  padding-left: 2%;
 }
 
 button:hover,
@@ -236,7 +239,16 @@ button:hover,
   color: #35185A;
 }
 
-/* EDIT */
+
+/* USERS */
+
+.users-div a,
+.users-div p {
+  margin-left: 5%;
+}
+
+
+/* EDIT TOPICS/COMMENTS/USERS */
 
 .back-btn:hover {
   color: #705395;
@@ -256,12 +268,6 @@ button:hover,
 }
 
 
-/* USERS */
-
-.users-div a,
-.users-div p {
-  margin-left: 5%;
-}
 
 
 

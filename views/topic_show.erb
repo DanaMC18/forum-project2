@@ -6,12 +6,18 @@
 
   <a href="/users/<%=@topic.user_id%>"> <%= @topic.user.username %> </a>
 
-  <p class="topic-content">  <%= @topic.content %> </p>
+  <p> <strong> Created: </strong> <%= @topic.created_at %> </p>
+
+  <div class="topic-content"> 
+    <%= Markdown.new(@topic.content).to_html%>
+  </div>
 
   <!-- EDIT TOPIC -->
   <!-- only seen by user who created it -->
   <% if @topic.user_id == session[:user_id] %>
     <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
+  <% else %>
+    <a class="hidden" href="/topics/<%= @topic.id %>/edit"> Edit </a>
   <% end %>
 
 
@@ -28,13 +34,19 @@
 
         <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
         <p><strong> At: </strong> <%= @comment.pretty_time %> </p>
-        <p class="class-content"> <%= @comment.content %> </p>
+
+        <div class="comment-content">
+          <%= Markdown.new(@comment.content).to_html%>
+        </div>
+
         
         <!-- EDIT COMMENT -->
         <!-- only seen by user who created comment-->
         <% if @comment.user_id == session[:user_id] %>
           <br>
           <a href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
+        <% else %>
+          <a class="hidden" href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
         <% end %>
 
         <div class="likes-div">
@@ -54,8 +66,6 @@
 
           </div> <!--likes div -->
 
-
-
       </div> <!--comment container -->
 
     <% else %>
@@ -67,13 +77,19 @@
 
           <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
           <p><strong> At: </strong> <%= comment.pretty_time %> </p>
-          <p class="comment-content"> <%= comment.content %> </p>
+
+          <div class="comment-content">
+            <%= Markdown.new(comment.content).to_html%>
+          </div>
           
+
           <!-- EDIT COMMENT -->
           <!-- only seen by user who created comment-->
           <% if comment.user_id == session[:user_id] %>
             <br>
             <a href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
+          <% else %>
+            <a class="hidden" href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
           <% end %>
 
           <div class="likes-div">

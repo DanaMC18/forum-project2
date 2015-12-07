@@ -1,8 +1,11 @@
+require "redcarpet"
+
 module App
   class Server < Sinatra::Base
 
     set :method_override, true
     enable :sessions
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
 
 
     #TOPICS:

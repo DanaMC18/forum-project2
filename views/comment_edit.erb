@@ -5,7 +5,9 @@
 <div class="edit-container">
   <h2> Current Comment: </h2>
 
-    <p class="comment-content"> <%= @comment.content %> </p>
+    <div class="comment-content">
+      <%= Markdown.new(@comment.content).to_html%>
+    </div>
 
 <div class="edit-form">
 
