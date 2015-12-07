@@ -21,6 +21,10 @@ header h1 {
   font-weight: bold;
 }
 
+header h3 {
+  color: #83F9E9;
+}
+
 #h1-1 {
   margin-bottom: 0px;
 }
@@ -48,7 +52,7 @@ header h1 {
 }
 
 #menu-bar a:hover {
-  color: #83F9E9;
+  color: #27F8DB;
   text-decoration: underline;
 }
 
@@ -69,7 +73,7 @@ header h1 {
 }
 
 #logout-btn:hover {
-  color: #83F9E9;
+  color: #27F8DB;
   text-decoration: underline;
 }
 
@@ -98,6 +102,8 @@ header h1 {
   margin: 150px auto;
 }
 
+/* HOME PAGE */
+
 #new-topic {
   width: 80%;
   margin: 0 auto;
@@ -110,11 +116,11 @@ header h1 {
 }
 
 #new-topic a:hover {
-  color: #83F9E9;
+  color: #705395;
 }
 
 .topic-div {
-  border: 2px solid black;
+  border: 2px solid #35185A;
   width: 80%;
   margin: 1% auto;
   display: center;
@@ -144,24 +150,28 @@ header h1 {
 
 .topic-div p a {
   color: #35185A;
+  margin-right: 35%;
 }
 
 .topic-div p a:hover {
-  color: #83F9E9;
+  color: #705395;
   text-decoration: underline;
+  font-weight: bolder;
 }
 
 .topic-div button {
   margin-left: 3%;
-  font-weight: bold;
 }
 
 .topic-div button:hover {
-  color: #83F9E9;;
+  color: #705395;
+  font-weight: bolder;
 }
 
 .votes-div {
   background: #AAAAAA;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .votes-div p {
@@ -172,17 +182,85 @@ header h1 {
   display: inline;
 }
 
-.comment-content {
-  border-top: 1px solid black;
+
+/* SHOW TOPIC PAGE */
+
+.topic-container {
+  border: 2px solid #35185A;
+  width: 80%;
+  background: #CCCCCC;
+  margin: 0 auto;
 }
 
+.topic-container h2 {
+  margin-top: 0px;
+  margin-bottom: .5%;
+  background: #35185A;
+  font-size: 25px;
+  padding: 1%;
+  color: white;
+}
 
+.topic-container a {
+  padding: 2%;
+ /* margin-top: 10%;*/
+}
 
+.topic-container a:hover {
+  font-weight: bolder;
+  color: #705395;
+}
 
+.topic-content {
+  background: #EEEEEE;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 1%;
+  border: 1px solid #35185A;
+}
 
+.comment-container {
+  margin-top: 1%;
+  border-bottom: 1px solid #35185A;
+  margin-bottom: .5%;
+}
 
+.comment-container p {
+  padding-left: 2%;
+}
 
+.comment-content {
+  background: #EEEEEE;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 1%;
+  border: 1px solid #35185A;
+}
 
+.likes-div {
+  background: #AAAAAA;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.likes-div p {
+  display: inline;
+  padding-right: 3%;
+}
+
+.likes-div form {
+  display: inline;
+}
+
+.topic-container button:hover {
+  color: #705395;
+  font-weight: bolder;
+}
+
+.add-comment {
+  margin-left: 3%;
+  padding-bottom: 1%;
+}
 
 
 

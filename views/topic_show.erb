@@ -1,93 +1,74 @@
 <br>
-<a href="/topics"> Back to Room of Requirement </a>
 
-<div id="topic-container">
+<div class="topic-container">
 
-
-  <h2><%= @topic.title %></h2>
+  <h2> <%= @topic.title %> </h2>
 
   <a href="/users/<%=@topic.user_id%>"> <%= @topic.user.username %> </a>
 
+  <p class="topic-content">  <%= @topic.content %> </p>
 
-  <div id="topic-content">
-    
-    <p> <%= @topic.content %> </p>
-
-
-    <!-- EDIT TOPIC -->
-    <!-- only seen by user who created it -->
-    <% if @topic.user_id == session[:user_id] %>
-      <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
-    <% end %>
-
-
-  </div> <!--content-->
-
+  <!-- EDIT TOPIC -->
+  <!-- only seen by user who created it -->
+  <% if @topic.user_id == session[:user_id] %>
+    <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
+  <% end %>
 
 
 
   <!-- COMMENTS -->
   <!-- Need if/else because .each does not work if there is only one comment -->
-  <div id="comments-container">
+  <div class="comments-container">
 
-    <h3>Comments:</h3>
-
+    <h2>Comments:</h2>
 
     <% if @comment %>
 
-      <div class="comment-content">
+      <div class="comment-container">
 
         <a href="/users/<%=@comment.user_id%>"> <%= @comment.user.username %>: </a>
         <p><strong> At: </strong> <%= @comment.pretty_time %> </p>
-        <p> <%= @comment.content %> </p>
-        <p><strong> Likes: </strong> <%= @comment.like_count %> </p>
+        <p class="class-content"> <%= @comment.content %> </p>
+        
+        <!-- EDIT COMMENT -->
+        <!-- only seen by user who created comment-->
+        <% if @comment.user_id == session[:user_id] %>
+          <br>
+          <a href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
+        <% end %>
+
+        <div class="likes-div">
+
+          <p><strong> Likes: </strong> <%= @comment.like_count %> </p>
 
 
-        <!-- LIKE COMMENT BUTTON -->
-        <!-- Only logged in users can like-->
-         <% if @user %>
+          <!-- LIKE COMMENT BUTTON -->
+          <!-- Only logged in users can like-->
+           <% if @user %>
 
-            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
-            <button>Like</button>
-            </form>
+              <form method="post" action="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/likes">
+              <button>Like</button>
+              </form>
 
-          <% end %>
+            <% end %>
+
+          </div> <!--likes div -->
 
 
-          <!-- EDIT COMMENT -->
-          <!-- only seen by user who created comment-->
-          <% if @comment.user_id == session[:user_id] %>
-            <br>
-            <a href="/topics/<%= @topic.id %>/comments/<%= @comment.id %>/edit"> Edit </a>
-          <% end %>
 
-        <br>
-
-      </div> <!--comment content -->
+      </div> <!--comment container -->
 
     <% else %>
 
+
       <% @comments.each do |comment| %>
 
-        <div class="comment-content">
+        <div class="comment-container">
 
           <a href="/users/<%=comment.user_id%>"> <%= comment.user.username %>: </a>
           <p><strong> At: </strong> <%= comment.pretty_time %> </p>
-          <p> <%= comment.content %> </p>
-          <p><strong> Likes: </strong> <%= comment.like_count %> </p>
-
-
-          <!-- LIKE COMMENT -->
-          <!-- Only logged in users can like-->
-          <% if @user %>
-
-            <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
-            <button>Like</button>
-            </form>
-
-          <% end %>
-
-
+          <p class="comment-content"> <%= comment.content %> </p>
+          
           <!-- EDIT COMMENT -->
           <!-- only seen by user who created comment-->
           <% if comment.user_id == session[:user_id] %>
@@ -95,9 +76,24 @@
             <a href="/topics/<%= @topic.id %>/comments/<%= comment.id %>/edit"> Edit </a>
           <% end %>
 
-          <br>
+          <div class="likes-div">
 
-        </div> <!-- comment content -->
+            <p><strong> Likes: </strong> <%= comment.like_count %> </p>
+
+
+            <!-- LIKE COMMENT -->
+            <!-- Only logged in users can like-->
+            <% if @user %>
+
+              <form method="post" action="/topics/<%= @topic.id %>/comments/<%= comment.id %>/likes">
+              <button>Like</button>
+              </form>
+
+            <% end %>
+
+          </div> <!-- likes div -->
+
+        </div> <!-- comment container -->
 
       <% end %> <!-- .each -->
 
@@ -110,6 +106,7 @@
     <!-- Seen only by someone logged in -->
     <% if @user %>
      
+     <div class="add-comment">
       <h3> Add Comment: </h3>
 
       <form method="POST" action="/topics/<%= @topic.id %>/comments/new">
@@ -117,7 +114,7 @@
         <p> Write Your Post Below </p>
         <textarea name="content" cols="100" rows="10"></textarea>
         <br>
-        <input type="submit" value="Add Comment">
+        <button>Add Comment</button>
 
       </form>
 
@@ -125,14 +122,14 @@
 
       <h3> Want to join the conversation? <a href="/"> Log In! </a> </h3>
 
+      </div>
+
     <% end %>
 
 
   </div> <!--comments-container-->
 
 </div><!--topic-container-->
-
-
 
 
 
