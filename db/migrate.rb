@@ -4,8 +4,8 @@ require_relative "migrations/create_comments"
 require_relative "migrations/create_likes"
 require_relative "migrations/create_votes"
 
-CreateUser.migrate(ARGV[0])
-CreateTopic.migrate(ARGV[0])
-CreateComment.migrate(ARGV[0])
-CreateLike.migrate(ARGV[0])
-CreateVote.migrate(ARGV[0])
+CreateUsers.migrate(ARGV[0])
+CreateTopics.migrate(ARGV[0])
+CreateComments.migrate(ARGV[0])
+CreateLikes.migrate(ARGV[0])
+CreateVotes.migrate(ARGV[0])
