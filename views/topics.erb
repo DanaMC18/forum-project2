@@ -1,8 +1,11 @@
 <br>
 <!-- Link to New Topic form; only seen if user is logged in -->
-<% if @user %>
-  <a href="/topics/new">Create a New Topic</a>
-<% end %>
+
+<div id="new-topic">
+  <% if @user %>
+    <a href="/topics/new">Create a New Topic</a>
+  <% end %>
+</div>
 
 <!-- list topics; will be ordered based on vote via server -->
 <% @topics.each do |topic| %>
@@ -14,25 +17,30 @@
       <%= topic.title %> </a>
     </h2>
 
-    <p> <strong>By: </strong>
+
+    <p> <strong> By: </strong>
       <a href="users/<%= topic.user_id%>">
       <%= topic.user.username %> </a>
     </p>
 
     <p> <strong> Comments: </strong> <%= topic.comment_count %> </p>
 
-    <p> <strong> Votes: </strong> <%= topic.vote_num %> </p>
-
-    <!-- VOTE UP BUTTON -->
-    <form method="POST" action="/topics/<%=topic.id%>/votes">
-
-      <button>Vote up!</button>
-
-    </form>
-
     <p> <strong> Created: </strong> <%= topic.pretty_time%> </p>
 
-    </div>
+    <div class="votes-div">
+
+      <p> <strong> Votes: </strong> <%= topic.vote_num %> </p>
+
+      <!-- VOTE UP BUTTON -->
+      <form method="POST" action="/topics/<%=topic.id%>/votes">
+
+        <button>Vote up!</button>
+
+      </form>
+      
+    </div> <!--votes div -->
+
+  </div> <!-- topic div -->
 
 <% end %>
 

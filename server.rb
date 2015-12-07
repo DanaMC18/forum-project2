@@ -5,18 +5,10 @@ module App
     enable :sessions
 
 
-    #home page
-    get '/' do 
-      @user = User.find(session[:user_id]) if session[:user_id]
-      erb :index, layout: false
-    end
-
-
     #TOPICS:
 
-    #topics page
-    #ranked by amount of votes; shows creator and number of comments
-    get '/topics' do 
+    #home page same as topics page
+    get '/' do 
       @user = User.find(session[:user_id]) if session[:user_id]
       @topics = Topic.topics_ordered
       erb :topics
@@ -28,7 +20,7 @@ module App
       user_id = session[:user_id] if session[:user_id]
       topic_id = params[:id]
       Vote.create(user_id: user_id, topic_id: topic_id)
-      redirect to '/topics'
+      redirect to '/'
     end
 
 
@@ -42,7 +34,7 @@ module App
     post '/topics/new' do 
       user_id = session[:user_id]
       Topic.create(title: params[:title], content: params[:content], created_at: DateTime.now, user_id: user_id)
-      redirect to "/topics"
+      redirect to "/"
     end
 
 
@@ -77,7 +69,7 @@ module App
     delete '/topics/:id' do 
       topic = Topic.find(params[:id])
       topic.destroy
-      redirect to '/topics'
+      redirect to '/'
     end
 
 
@@ -88,7 +80,7 @@ module App
       user_id = session[:user_id] if session[:user_id]
       comment_id = params[:id2]
       Like.create(user_id: user_id, comment_id: comment_id)
-      redirect to "topics/#{params[:id]}"
+      redirect to "/topics/#{params[:id]}"
     end
 
 
@@ -162,21 +154,23 @@ module App
     delete '/users/:id' do 
       user = User.find(params[:id])
       user.destroy
-      redirect to '/users'
+      session[:user_id] = nil
+      redirect to '/'
     end
 
 
     # user registration 
     post '/users' do 
       user = User.new({name: params[:name], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]})
+      @topics = Topic.all
       if user.save
-        redirect to '/topics'
+        redirect to '/'
       elsif params[:password] != params[:password_confirmation]
         @password_message = "Sorry #{params[:name]}, your passwords did not match. Please try again."
-        erb :index, layout: false
+        erb :topics
       else
         @username_message = "Sorry #{params[:name]}, #{params[:username]} is already a username."
-        erb :index, layout: false
+        erb :topics
       end
     end
 
@@ -189,11 +183,12 @@ module App
     # user login
     post '/sessions' do 
       user = User.find_by(username: params[:username])
+      @topics = Topic.all
       if user && session[:user_id] = user.id
-        redirect to '/'
+         redirect to '/'
       else
         @incorrect_info = 'Your username or password does not match our records, please try again.'
-        erb :index, layout: false
+         erb :topics
       end
     end
 

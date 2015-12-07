@@ -1,6 +1,6 @@
 body {
   font-family: helvetica;
-  background: #BBBBBB;
+  background: #EEEEEE;
 }
 
 button {
@@ -10,12 +10,12 @@ button {
 header {
   background-image: url("https://s-media-cache-ak0.pinimg.com/originals/62/9d/6c/629d6c062d74a99979c7b04accc11115.gif");
   background-position: center;
-  color: #4F628E;
+  color: #705395;
   text-align: center;
-  border: 3px solid #4F628E;
+  border: 3px solid #35185A;
 }
 
-h1 {
+header h1 {
   font-size: 60px;
   text-shadow: 3px 3px #000000;
   font-weight: bold;
@@ -32,12 +32,12 @@ h1 {
 #menu-bar {
   background: white;
   display: block;
-  border-top: 3px solid #4F628E;
+  border-top: 3px solid #35185A;
   padding: 1%;
 }
 
 #menu-bar a {
-  color: #4F628E;
+  color: #35185A;
   font-weight: bolder;
   font-size: 20px;
   text-decoration: none; 
@@ -48,7 +48,8 @@ h1 {
 }
 
 #menu-bar a:hover {
-  color: #67989A;
+  color: #83F9E9;
+  text-decoration: underline;
 }
 
 #login-menu {
@@ -58,26 +59,123 @@ h1 {
 
 #logout-btn {
   cursor: pointer;
-  margin-left: 300px;
+  margin-left: 450px;
   border: none;
   background: none;
-  color: #4F628E;
+  color: #35185A;
   font-weight: bolder;
   font-size: 20px;
   padding-top: 1%;
 }
 
 #logout-btn:hover {
-  color: #67989A;
+  color: #83F9E9;
+  text-decoration: underline;
+}
+
+.close-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  float: right;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-content {
+  position: relative;
+  background-position: center;
+  background-color: white;
+  width: 40%;
+  margin: 0 30%;
+  margin: 150px auto;
+}
+
+#new-topic {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+#new-topic a {
+  color: #35185A;
+  font-weight: bold;
+}
+
+#new-topic a:hover {
+  color: #83F9E9;
 }
 
 .topic-div {
-  border-top: 1px solid black;
+  border: 2px solid black;
+  width: 80%;
+  margin: 1% auto;
+  display: center;
+  background: #CCCCCC;
+}
+
+.topic-div h2 {
+  margin-top: 0px;
+  background: #35185A;
+  font-size: 25px;
+  padding: 1%;
+}
+
+.topic-div a {
+  color: white;
+}
+
+.topic-div a:hover {
+  color: #83F9E9;
+  text-decoration: underline;
+}
+
+.topic-div p {
+  margin-left: 3%;
+  color: #35185A;
+}
+
+.topic-div p a {
+  color: #35185A;
+}
+
+.topic-div p a:hover {
+  color: #83F9E9;
+  text-decoration: underline;
+}
+
+.topic-div button {
+  margin-left: 3%;
+  font-weight: bold;
+}
+
+.topic-div button:hover {
+  color: #83F9E9;;
+}
+
+.votes-div {
+  background: #AAAAAA;
+}
+
+.votes-div p {
+  display: inline;
+}
+
+.votes-div form {
+  display: inline;
 }
 
 .comment-content {
   border-top: 1px solid black;
 }
+
 
 
 
