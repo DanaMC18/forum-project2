@@ -87,6 +87,31 @@ h2 {
   text-decoration: underline;
 }
 
+footer {
+  border: 1px solid #AAAAAA;
+  background: #DDDDDD;
+  text-decoration: none;
+  display: block;
+  padding: 0px;
+  text-align: center;
+  margin: 0, auto;
+  display: center;
+}
+
+footer li {
+  display: inline;
+  font-size: 15px;
+  padding-left: 3%;
+}
+
+footer li,
+footer a {
+  color: #AAAAAA;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
 .close-btn {
   text-decoration: underline;
   cursor: pointer;
