@@ -18,6 +18,5 @@ Vote.destroy_all
 
 
 # default profile pics
-# markdown (redcarpet gem) 
 # wire frames
 # still logging in with incorrect password....WHY!?

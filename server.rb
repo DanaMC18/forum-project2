@@ -185,10 +185,11 @@ module App
 
     # user login
     post '/sessions' do 
-      user = User.find_by(username: params[:username])
+      user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
       @topics = Topic.all
-      if user && session[:user_id] = user.id
-         redirect to '/'
+      if user
+        session[:user_id] = user.id 
+        redirect to '/'
       else
         @incorrect_info = 'Your username or password does not match our records, please try again.'
          erb :topics
