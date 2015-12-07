@@ -12,7 +12,7 @@ var $LoginCloseBtn;
 var $registerModal;
 var $loginModal;
 
-var $loginCommentBtn
+var $loginCommentBtn;
 
 // var $editCommentForms;
 // var $editCommentBtns;

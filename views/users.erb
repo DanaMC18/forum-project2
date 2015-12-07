@@ -1,10 +1,14 @@
-<h1>Fantastic Peeps! </h1>
+<div class="users-div">
 
-<% @users.each do |user| %>
+  <h2>Fantastic Peeps! </h2>
 
-  <h3> 
-    <a href="/users/<%= user.id %>"> 
-    <%= user.username %> </a>
-  </h3>
+  <% @users.each do |user| %>
 
-<% end %>
+    <h3> 
+      <a href="/users/<%= user.id %>"> 
+      <%= user.username %> </a>
+    </h3>
+
+  <% end %>
+ 
+</div>

@@ -12,10 +12,12 @@
 
   </div> <!--topic-content-->
 
+  <div class="edit-form">
+
+  <h3> Edit below </h3>
 
 <!-- EDIT FORM -->
-
-<form class="topic-form" method="post" action="/topics/<%= @topic.id %>/edit">
+<form method="post" action="/topics/<%= @topic.id %>/edit">
 
   <input type="hidden" name="_method" value="patch">
 
@@ -39,10 +41,12 @@
 
 
 <!-- DELETE BUTTON -->
-<form class="topic-form" method="post" action="/topics/<%= @topic.id %>">
+<form method="post" action="/topics/<%= @topic.id %>">
   <input type="hidden" name="_method" value="delete">
   <button>Delete</button>
 </form>
+
+</div>
 
 </div> <!--topic-container-->
 

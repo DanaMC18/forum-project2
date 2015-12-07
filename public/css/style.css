@@ -16,14 +16,24 @@ header {
 }
 
 header h1 {
-  font-size: 60px;
+  font-size: 55px;
   text-shadow: 3px 3px #000000;
   font-weight: bold;
 }
 
 header h3 {
-  color: #83F9E9;
+  color: #27F8DB;
 }
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: .5%;
+  background: #35185A;
+  font-size: 25px;
+  padding: 1%;
+  color: white;
+}
+
 
 #h1-1 {
   margin-bottom: 0px;
@@ -96,10 +106,13 @@ header h3 {
 .modal-content {
   position: relative;
   background-position: center;
-  background-color: white;
+  background-color: #EEEEEE;
   width: 40%;
   margin: 0 30%;
   margin: 150px auto;
+  padding: 3%;
+  border: 3px solid #35185A;
+  font-size: 20px;
 }
 
 
@@ -120,19 +133,14 @@ header h3 {
   color: #705395;
 }
 
-.topic-div {
+.topic-div,
+.topic-container,
+.users-div {
   border: 2px solid #35185A;
   width: 80%;
   margin: 1% auto;
   display: center;
   background: #CCCCCC;
-}
-
-.topic-div h2 {
-  margin-top: 0px;
-  background: #35185A;
-  font-size: 25px;
-  padding: 1%;
 }
 
 .topic-div a {
@@ -144,9 +152,15 @@ header h3 {
   text-decoration: underline;
 }
 
-.topic-div p {
+a:hover {
+  color: #705395;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.topic-div p,
+.topic-div button {
   margin-left: 3%;
-  color: #35185A;
 }
 
 .topic-div p a {
@@ -154,22 +168,8 @@ header h3 {
   margin-right: 35%;
 }
 
-.topic-div p a:hover {
-  color: #705395;
-  text-decoration: underline;
-  font-weight: bolder;
-}
-
-.topic-div button {
-  margin-left: 3%;
-}
-
-.topic-div button:hover {
-  color: #705395;
-  font-weight: bolder;
-}
-
-.votes-div {
+.votes-div,
+.likes-div {
   background: #AAAAAA;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -179,40 +179,26 @@ header h3 {
   display: inline;
 }
 
-.votes-div form {
+.likes-div p {
+  display: inline;
+  padding-right: 3%;
+}
+
+.votes-div form,
+.likes-div form {
   display: inline;
 }
 
 
 /* SHOW TOPIC PAGE */
 
-.topic-container {
-  border: 2px solid #35185A;
-  width: 80%;
-  background: #CCCCCC;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-top: 0px;
-  margin-bottom: .5%;
-  background: #35185A;
-  font-size: 25px;
-  padding: 1%;
-  color: white;
-}
-
 .topic-container a {
   color: #705395;
   padding: 2%;
 }
 
-.topic-container a:hover {
-  font-weight: bolder;
-  color: #705395;
-}
-
-.topic-content {
+.topic-content,
+.comment-content {
   background: #EEEEEE;
   margin-left: 5%;
   margin-right: 5%;
@@ -233,59 +219,54 @@ h2 {
   padding-left: 2%;
 }
 
-.comment-content {
-  background: #EEEEEE;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 1%;
-  border: 1px solid #35185A;
-}
-
-.likes-div {
-  background: #AAAAAA;
-  padding-top: 1%;
-  padding-bottom: 1%;
-}
-
-.likes-div p {
-  display: inline;
-  padding-right: 3%;
-}
-
-.likes-div form {
-  display: inline;
-}
-
-button:hover {
+button:hover,
+.comment-login a:hover {
   color: #705395;
   font-weight: bolder;
 }
 
 .add-comment {
   margin-left: 3%;
-  padding-bottom: 1%;
+  margin-bottom: 1%;
 }
 
-
-/* EDIT TOPIC */
-
-.topic-form {
-  margin-left: 5%;
-  margin-top: 2%;
+.comment-login,
+.comment-login a {
+  margin-left: 3%;
+  color: #35185A;
 }
 
-
-/*EDIT COMMENT*/
+/* EDIT */
 
 .back-btn:hover {
   color: #705395;
   font-weight: bolder;
 }
 
-.edit-comment-container {
+.edit-container {
   border: 1px solid #35185A;
-  background: #AAAAAA;
+  background: #CCCCCC;
+  width: 80%;
+  margin: 0 auto;
 }
+
+.edit-form {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+
+/* USERS */
+
+.users-div a,
+.users-div p {
+  margin-left: 5%;
+}
+
+
+
+
+
 
 
 

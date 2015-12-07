@@ -2,12 +2,12 @@
 <a class="back-btn" href="/topics/<%= @comment.topic_id %>">Back</a>
 <br>
 
-<div class="edit-comment-container">
+<div class="edit-container">
   <h2> Current Comment: </h2>
 
     <p class="comment-content"> <%= @comment.content %> </p>
 
-  </div>
+<div class="edit-form">
 
   <h3> Edit below </h3>
 
@@ -27,3 +27,6 @@
     <input type="hidden" name="_method" value="delete">
     <button> Delete Comment </button>
   </form>
+
+</div> <!-- edit form -->
+</div> <!-- edit container -->
