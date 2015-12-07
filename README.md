@@ -1,4 +1,5 @@
-# Forum
+# Fantastic Peeps
+## And Where to Find Them
 
 ##User Stories
 1. A user should be able to **create new topics**.
@@ -36,3 +37,4 @@
 8. Active Record
 
 ##Link to App!
+[*Accio* Peeps!](https://fantastic-peeps.herokuapp.com/)
