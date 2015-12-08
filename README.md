@@ -65,6 +65,8 @@
 6. Sinatra
 7. SQL
 8. Active Record
+9. BCrypt
+10. Red Carpet
 
 ##Link to App!
 [*Accio* Peeps!](https://fantastic-peeps.herokuapp.com/)
