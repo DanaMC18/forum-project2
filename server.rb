@@ -18,18 +18,22 @@ module App
     end
 
 
+    #to get to new topic form 
+    get "/topics/new" do 
+      if session[:user_id]
+        erb :topic_new
+      else
+        redirect to "/"
+      end
+    end
+
+
     #to vote on topics 
     post "/topics/:id/votes" do
       user_id = session[:user_id] if session[:user_id]
       topic_id = params[:id]
       Vote.create(user_id: user_id, topic_id: topic_id)
       redirect to "/"
-    end
-
-
-    #to get to new topic form 
-    get "/topics/new" do 
-      erb :topic_new
     end
 
 
@@ -56,7 +60,11 @@ module App
     # to get edit topic form
     get "/topics/:id/edit" do 
       @topic = Topic.find(params[:id])
-      erb :topic_edit
+      if session[:user_id] == @topic.user_id
+        erb :topic_edit
+      else
+        redirect to "/topics/#{@topic.id}"
+      end
     end
 
 
@@ -90,9 +98,12 @@ module App
     # get to edit comment form
     get "/topics/:id/comments/:id2/edit" do 
       @comment = Comment.find(params[:id2])
-      @comments = Comment.where(topic_id: params[:id])
       @topic = Topic.find(params[:id])
-      erb :comment_edit
+      if session[:user_id] == @comment.user_id
+        erb :comment_edit
+      else
+        redirect to "/topics/#{params[:id]}"
+      end
     end
 
 
@@ -136,9 +147,12 @@ module App
 
     # profile page of a particular user
     get "/users/:id" do 
-      @user = User.find(session[:user_id]) if session[:user_id]
-      @profile = User.find(params[:id])
-      erb :user_show
+      @user = User.find(params[:id])
+      if session[:user_id] 
+        erb :user_show
+      else
+        redirect to "/"
+      end
     end
 
 

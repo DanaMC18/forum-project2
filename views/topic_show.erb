@@ -16,6 +16,7 @@
   <!-- EDIT TOPIC BUTTON -->
   <!-- only seen by user who created topic -->
   <% if @topic.user_id == session[:user_id] %>
+    <br>
     <a href="/topics/<%= @topic.id %>/edit"> Edit </a>
   <% else %>
     <a class="hidden" href="/topics/<%= @topic.id %>/edit"> Edit </a>

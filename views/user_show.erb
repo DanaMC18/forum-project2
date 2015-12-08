@@ -2,12 +2,12 @@
 <!-- USER PROFILE -->
 <div class="users-div">
 
-  <h2> <%= @profile.username %> </h2>
-  <p> <img src=" <%= @profile.profile_pic %> "> </p>
-  <p> <strong> Name: </strong> <%= @profile.name %> </p>
+  <h2> <%= @user.username %> </h2>
+  <p> <img src=" <%= @user.profile_pic %> "> </p>
+  <p> <strong> Name: </strong> <%= @user.name %> </p>
 
   <!-- Only see EDIT PROFILE LINK if profile belongs to user -->
-  <% if @profile.id == @user.id %>
+  <% if session[:user_id] == @user.id %>
     <a href="/users/<%= @user.id %>/edit"> Edit Profile </a>
     <br>
   <% end %>
